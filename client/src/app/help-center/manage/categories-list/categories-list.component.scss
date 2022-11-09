@@ -1,0 +1,39 @@
+@import "../../../../assets/scss/variables";
+
+categories-list {
+  display: block;
+  height: 100%;
+  background-color: $hc-manage-bg-color;
+
+  > .scroll-container {
+    height: calc(100% - #{$categories-page-action-bar-height});
+    overflow: auto;
+    padding-top: 35px;
+  }
+
+  .container {
+    max-width: $categories-page-max-width;
+    margin: 0 auto;
+
+    > .categories-list {
+      > category-list-item {
+        background-color: $categories-page-item-bg-color;
+        padding: $categories-page-item-padding;
+        border: $categories-page-item-border;
+        box-shadow: $categories-page-item-box-shadow;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        transition: background-color 0.2s ease-in-out;
+        border-radius: 4px;
+
+        &.child-category {
+          margin-left: 15px;
+        }
+
+        &:hover {
+          background-color: darken($categories-page-item-bg-color, 3%);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="nav-content">
+        <a class="nav-group logo-group left" routerLink="/">
+            <img *ngIf="settings.has('branding.hc_logo')" [src]="settings.get('branding.hc_logo')" alt="Logo" class="logo">
+            <div class="text-logo" *ngIf="!settings.has('branding.hc_logo')">{{settings.get('branding.site_name')}}</div>
+        </a>
+
+        <custom-menu position="header" class="nav-group right">
+            <logged-in-user-widget class="nav-item"></logged-in-user-widget>
+        </custom-menu>
+    </div>
+</nav>

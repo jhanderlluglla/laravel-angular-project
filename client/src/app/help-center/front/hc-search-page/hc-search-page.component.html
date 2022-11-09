@@ -1,0 +1,34 @@
+<section class="scroll-container" customScrollbar>
+    <hc-compact-header>
+        <div class="header">
+            <a class="back" [routerLink]="['/']">
+                <svg-icon name="keyboard-backspace"></svg-icon>
+                <span trans>Help Center</span>
+            </a>
+            <span class="info">Showing {{perPage}} results for <strong>"{{query}}"</strong></span>
+        </div>
+    </hc-compact-header>
+
+    <div class="content">
+        <section class="article-container" *ngFor="let article of results">
+            <div class="icon"><svg-icon name="description"></svg-icon></div>
+            <div class="article">
+                <a class="title" [routerLink]="urls.getArticleLink(article)">{{article.title}}</a>
+                <div class="body">{{article.body}}</div>
+                <div class="path" *ngIf="article.categories.length">
+                    <ng-container *ngIf="article.categories[0] && article.categories[0].parent">
+                        <a class="parent" [routerLink]="urls.getCategoryLink(article.categories[0].parent)">{{article.categories[0].parent.name}}</a>
+                        <svg-icon name="keyboard-arrow-right"></svg-icon>
+                    </ng-container>
+
+                    <a class="child" [routerLink]="urls.getCategoryLink(article.categories[0])">{{article.categories[0].name}}</a>
+                    <svg-icon name="keyboard-arrow-right"></svg-icon>
+
+                    <span class="last" trans>Article</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <customer-footer></customer-footer>
+</section>

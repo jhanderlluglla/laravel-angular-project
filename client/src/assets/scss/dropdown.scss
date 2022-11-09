@@ -1,0 +1,87 @@
+@import "../../assets/scss/variables";
+
+//.dropdown {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  background-color: $panel-background-color;
+//  box-shadow: $dropdown-box-shadow;
+//  width: $floating-toolbar-width;
+//  border-radius: $dropdown-border-radius;
+//  z-index: 11;
+//  max-height: $dropdown-max-height;
+//  overflow: auto;
+//  padding: 10px 0;
+//
+//  &.left {
+//    right: 0;
+//    left: auto;
+//  }
+//
+//  &.wide {
+//    width: $floating-toolbar-wide-width;
+//    max-height: none;
+//  }
+//
+//  .dropdown-item {
+//    display: block;
+//    position: relative;
+//    width: 100%;
+//    padding: 0 16px;
+//    margin: 0 auto;
+//    letter-spacing: .01em;
+//    color: #6A6A6A;
+//    text-align: left;
+//    cursor: pointer;
+//    overflow: hidden;
+//    font-size: 1.5rem;
+//    font-weight: 400;
+//    text-transform: none;
+//    height: 36px;
+//    line-height: 36px;
+//
+//    > .text {
+//      flex-grow: 1;
+//    }
+//
+//    > .alt-text {
+//      flex-grow: 0;
+//      margin: 0 8px;
+//      align-self: flex-end;
+//    }
+//
+//    > svg-icon {
+//      color: $icon-color-dark;
+//      position: absolute;
+//      top: 7px;
+//      left: 16px;
+//      width: 21px;
+//      height: 21px;
+//    }
+//
+//    &.active {
+//      font-weight: 500;
+//    }
+//
+//    &:hover {
+//      background-color: $dropdown-item-hover-bg-color;
+//    }
+//  }
+//
+//  &.indent {
+//    .dropdown-item {
+//      padding: 0 24px 0 48px;
+//    }
+//  }
+//}
+//
+//.dropdown-left {
+//  .dropdown {
+//    right: 0;
+//    left: initial;
+//  }
+//}
+//
+//.dropdown-container {
+//  position: relative;
+//}

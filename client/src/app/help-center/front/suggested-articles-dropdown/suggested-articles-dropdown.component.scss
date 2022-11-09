@@ -1,0 +1,151 @@
+@import "../../../../assets/scss/variables";
+
+suggested-articles-dropdown {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+
+  .input-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+    > input {
+      display: block;
+      height: $hc-search-bar-height;
+      max-height: $hc-search-bar-height;
+      border-radius: 50px;
+      font-size: 1.8rem;
+      padding: 0 30px;
+      border: none;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      transition: background-color 0.3s;
+
+      @media only screen and (max-width: $tablet) {
+        font-size: 1.5rem;
+      }
+    }
+
+    > .input-icon {
+      position: absolute;
+      right: 40px;
+      top: 7px;
+      font-size: 2rem;
+      color: #86939e;
+      padding: 4px 5px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      transition: color 0.3s;
+
+      &.spin-icon {
+        display: none;
+      }
+    }
+  }
+
+  .dropdown-open .input-container {
+    input {
+      background-color: lighten($primary-color-light, 33%);
+    }
+
+    .input-icon {
+      color: $primary-color;
+    }
+  }
+
+  .suggestions-container {
+    position: relative;
+
+    &.has-results .search-results {
+      display: block;
+    }
+
+    &.searching .search-icon {
+      animation: flickerAnimation 0.5s infinite;
+    }
+
+    .search-results {
+      position: absolute;
+      display: none;
+      width: 100%;
+      max-height: none;
+      overflow: auto;
+      border-radius: 6px;
+      top: -$hc-search-results-spacing;
+      padding-top: $hc-search-bar-height + ($hc-search-results-spacing * 2);
+      padding-bottom: 0;
+      z-index: 1;
+      transform-origin: top;
+
+      .result {
+        padding: 12px 15px;
+        font-size: 1.4rem;
+        display: flex;
+        border-bottom: 1px solid $border-color-light;
+        height: auto;
+        line-height: normal;
+
+        &:hover {
+          background-color: $hover-color;
+        }
+
+        &.see-all {
+          padding-left: 22px;
+        }
+
+        .result-content {
+          width: calc(100% - 30px);
+        }
+
+        > svg-icon {
+          position: static;
+          margin-right: 6px;
+          width: 32px;
+          height: 32px;
+          color: $hc-article-icon-color;
+        }
+
+        .title {
+          font-weight: 500;
+          margin-bottom: 5px;
+          color: $hc-text-color;
+          font-size: 1.6rem;
+        }
+
+        .body {
+          color: $text-color-secondary;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 97%;
+        }
+
+        .meta {
+          margin: 15px 0 5px;
+          font-size: 1.3rem;
+          color: $text-color-secondary;
+
+          > .inline {
+            vertical-align: middle;
+            border: 1px solid $border-color;
+            border-radius: 3px;
+            padding: 3px 5px;
+          }
+        }
+      }
+
+      .see-all {
+        display: block;
+        padding: 12px 15px;
+      }
+    }
+  }
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0.4; }
+  100% { opacity:1; }
+}

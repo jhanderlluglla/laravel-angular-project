@@ -1,0 +1,11 @@
+<section class="flex-table-panel spacing">
+	<div class="flex-table-panel-header">
+        <div class="header-inner default" *ngIf="currentUser.hasPermission('tickets.create')">
+            <a class="button primary" routerLink="new" trans>Add</a>
+        </div>
+    </div>
+    <div>
+		<tickets-list [fetchTickets]="false" [openTicketInModal]="false" [items]="paginator.data || []"></tickets-list>
+		<pagination-controls [paginator]="paginator.data" itemsName="Tickets"></pagination-controls>
+	</div>
+</section>

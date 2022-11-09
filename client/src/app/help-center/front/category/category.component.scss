@@ -1,0 +1,45 @@
+@import "../../../../assets/scss/variables";
+
+category {
+  display: block;
+  background-color: $hc-background-color;
+  height: 100%;
+
+  > .scroll-container {
+    height: 100%;
+  }
+
+  .flex-container {
+    min-height: calc(100% - #{$hc-compact-header-navbar-height + $hc-compact-header-sub-header-height + $hc-footer-height + 40});
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    padding: 0 15px;
+
+    > .category-articles {
+      flex: 1 1 auto;
+      margin-right: 50px;
+    }
+
+    > topics-panel {
+      flex: 0 0 $hc-sidebar-width;
+      max-width: $hc-sidebar-width;
+      border-left: 1px solid $border-color-light;
+    }
+  }
+
+  @media only screen and (max-width: $laptop) {
+    .flex-container {
+      display: block;
+      margin-top: 15px;
+
+      articles-order-select {
+        display: none;
+      }
+
+      topics-panel {
+        border-left: none;
+      }
+    }
+  }
+}

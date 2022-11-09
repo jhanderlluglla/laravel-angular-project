@@ -1,0 +1,9 @@
+<dropdown [trigger]="el" [origin]="el" (onClose)="clearSearchField()">
+    <ng-content></ng-content>
+
+    <div class="dropdown-menu" #menu customScrollbar>
+        <div class="tags">
+            <div class="dropdown-item tag" #menuItem *ngFor="let tag of tags" (click)="addTag(tag.name)">{{tag.name}}</div>
+        </div>
+    </div>
+</dropdown>

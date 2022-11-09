@@ -1,0 +1,19 @@
+<div class="filters-list">
+    <categories-manager class="article-categories-filter" (onChange)="applyFilter('categories', $event)"></categories-manager>
+
+    <div class="panel tags-filter">
+        <div class="panel-header" trans>Tags</div>
+        <div class="panel-body">
+            <tags-manager (onChange)="applyFilter('tags', $event)"></tags-manager>
+        </div>
+    </div>
+
+    <div class="panel article-type-filter">
+        <div class="panel-header" trans>Article Status</div>
+        <div class="panel-body">
+            <button class="button flat filter-button all-filter-button" (click)="applyFilter('draft', null)" [class.active]="filterIsActive('draft', null)" trans>All</button>
+            <button class="button flat filter-button not-draft-filter-button" (click)="applyFilter('draft', 0)" [class.active]="filterIsActive('draft', 0)" trans>Published</button>
+            <button class="button flat filter-button draft-filter-button" (click)="applyFilter('draft', 1)" [class.active]="filterIsActive('draft', 1)" trans>Draft</button>
+        </div>
+    </div>
+</div>

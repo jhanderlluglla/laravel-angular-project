@@ -1,0 +1,36 @@
+@import "../../../assets/scss/variables";
+
+no-results-message {
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+  > .icon > img {
+    width: 150px;
+    height: 150px;
+  }
+
+  > .text {
+    color: $hc-title-text-color;
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+
+    > .main {
+      font-size: 2.6rem;
+      font-weight: 500;
+    }
+
+    > .secondary {
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

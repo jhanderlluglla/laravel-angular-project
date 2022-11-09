@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/variables";
+
+assign-users-to-group-modal {
+  .assign-users {
+    display: flex;
+    margin-bottom: 5px;
+
+    > .label {
+      flex: 1 1 auto;
+      width: 50%;
+    }
+
+    > .more {
+      flex: 1 1 auto;
+      width: 50%;
+      text-align: right;
+      color: $link-color;
+
+      &:hover {
+        color: lighten($link-color, 20%);
+      }
+    }
+  }
+}

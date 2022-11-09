@@ -1,0 +1,13 @@
+<div class="jumbotron compact" [style.background-image]="'url('+settings.get('hc.home.background')+')'">
+    <customer-navbar class="transparent"></customer-navbar>
+
+    <div class="header">
+        <div class="container">
+            <div class="search-bar">
+                <h1 class="title">{{settings.get('hc.home.title')}}</h1>
+                <div class="subtitle">{{settings.get('hc.home.subtitle')}}</div>
+                <suggested-articles-dropdown placeholder="{{settings.get('hc.home.search-placeholder')}}"></suggested-articles-dropdown>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<section class="scroll-container" id="article-host">
+    <hc-compact-header>
+        <breadcrumbs [resource]="article" resourceType="article"></breadcrumbs>
+    </hc-compact-header>
+
+    <div class="content">
+        <article></article>
+        <div class="related-content">
+            <div class="title" trans>Related Content</div>
+            <a class="item" [routerLink]="this.urls.getArticleLink(article)" *ngFor="let article of relatedArticles">
+                <svg-icon name="description"></svg-icon>
+                <span class="related-item-title">{{article.title}}</span>
+            </a>
+        </div>
+    </div>
+
+    <customer-footer></customer-footer>
+</section>

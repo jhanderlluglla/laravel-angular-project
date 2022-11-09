@@ -1,0 +1,21 @@
+@import "../../../assets/scss/variables";
+
+assign-ticket-dropdown {
+  position: relative;
+  display: inline-block;
+
+  > dropdown {
+    .dropdown-menu {
+      min-width: $floating-toolbar-width;
+      width: auto;
+
+      > .dropdown-item {
+        font-size: 1.4rem;
+
+        &.active {
+          background-color: darken($dropdown-item-hover-bg-color, 5%);
+        }
+      }
+    }
+  }
+}

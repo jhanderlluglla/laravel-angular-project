@@ -1,0 +1,394 @@
+@import "../../../../assets/scss/variables";
+
+envato-reports {
+  display: flex;
+  padding-bottom: 25px;
+
+  .chart-container {
+    position: relative;
+
+    > .header {
+      padding: 10px 0;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 50;
+    }
+
+    > .body {
+      height: $chart-height;
+      background-color: darken($admin-table-background-color, 1%);
+      border: 1px solid $border-color;
+      position: relative;
+
+      > .chart {
+        height: $chart-height;
+        padding: 20px 15px 10px 5px;
+      }
+    }
+  }
+
+  > .details {
+    position: relative;
+    width: 450px;
+    flex: 0 0 450px;
+    height: 100%;
+    background-color: $admin-table-background-color;
+    border: 1px solid $border-color;
+    margin-left: 25px;
+    overflow: auto;
+
+    .header {
+      display: flex;
+      border-bottom: 1px solid $border-color;
+      font-weight: 500;
+
+      > .tab-trigger {
+        flex: 0 0 50%;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        background-color: $reports-panel-background-color;
+
+        &.active {
+          border-bottom: 2px solid $accent-color;
+        }
+      }
+    }
+
+    .sales {
+      .sale {
+        border: 1px solid $border-color;
+        padding: 15px;
+        margin: 10px;
+        max-width: 100%;
+        overflow: hidden;
+        background-color: $reports-panel-background-color;
+
+        .item-name {
+          font-weight: 500;
+        }
+
+        .date {
+          display: inline-block;
+          margin-right: 15px;
+          font-size: 1.3rem;
+        }
+
+        .amount {
+          color: $success-bg-color;
+          display: inline-block;
+          font-size: 1.3rem;
+        }
+
+        .order-id {
+          margin-left: 15px;
+          color: $text-color-secondary;
+          display: inline-block;
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .earnings {
+      .flex-table {
+        .flex-table-row:nth-child(odd) {
+          background-color: $reports-panel-background-color;
+        }
+        .flex-table-item {
+          height: 36px;
+        }
+      }
+    }
+
+    .no-sales {
+      background-color: $reports-panel-background-color;
+      padding: 10px;
+      border: 1px solid $border-color;
+      margin: 10px;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+  }
+
+  > .report {
+    flex: 1 1 auto;
+    background-color: $admin-table-background-color;
+    border: 1px solid $border-color;
+    padding: 15px;
+    position: relative;
+
+    .header {
+      padding-top: 0;
+
+      .easy-filters {
+        display: flex;
+        align-items: center;
+
+        > .title {
+          flex: 0 0 50%;
+          width: 50%;
+          font-size: 1.8rem;
+          color: $hc-title-text-color;
+        }
+
+        > .actions {
+          flex: 0 0 50%;
+          width: 50%;
+          text-align: right;
+
+          > .compare-trigger {
+            margin-left: 10px;
+            font-size: 1.8rem;
+
+            &.active {
+              color: $accent-color;
+            }
+          }
+
+          > .action {
+            color: $text-color;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+
+            &.selected {
+              background-color: $flat-button-background-color;
+            }
+          }
+        }
+      }
+
+      .custom-filters {
+        margin: 25px 0 0;
+        min-height: 50px;
+
+        .to {
+          display: inline-block;
+          margin: 0 5px;
+          font-weight: 500;
+        }
+
+        datepicker {
+          display: inline-block;
+          color: $text-color-secondary;
+          vertical-align: middle;
+        }
+
+        .button {
+          vertical-align: middle;
+          margin-left: 5px;
+          background-color: $accent-color;
+          color: $accent-text-color;
+
+          &:hover {
+            background-color: lighten($accent-color, 5%);
+          }
+        }
+
+        > .left, > .right {
+          background-color: $reports-panel-background-color;
+          border: 1px solid $border-color;
+          padding: 10px;
+          text-align: center;
+          width: 49.5%;
+        }
+
+        > .left {
+          float: left;
+        }
+
+        > .right {
+          float: right;
+
+          .cancel-compare {
+            font-size: 1.6rem;
+            min-width: 0;
+            background-color: darken($admin-table-background-color, 5%);
+            color: $text-color-secondary;
+            padding: 0 3px;
+            line-height: 28px;
+            height: 28px;
+          }
+        }
+
+        select {
+          border: 1px solid $border-color;
+          color: $text-color;
+          height: 28px;
+          padding: 0 5px;
+        }
+
+        .select-group {
+          display: inline-block;
+          vertical-align: middle;
+
+          > select {
+            display: block;
+            float: left;
+            border-right: none;
+            font-size: 1.4rem;
+
+            &:last-of-type {
+              border-right: 1px solid $border-color;
+            }
+          }
+        }
+      }
+    }
+
+    .no-data-available {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(250, 250, 250, 0.7);
+
+      > .text {
+        background-color: $admin-table-background-color;
+        padding: 10px;
+        border: 1px solid $border-color;
+      }
+    }
+  }
+
+  .item-sales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    .flex-table {
+      width: 100%;
+      font-weight: 500;
+      color: $text-color-secondary;
+
+      .name {
+        flex: 0 0 50%;
+        cursor: pointer;
+
+        > .clear-item-filter {
+          background-color: $danger-bg-color;
+          color: $danger-text-color;
+          font-size: 1.7rem;
+          margin-left: 10px;
+          padding: 8px 5px 5px;
+
+          &:hover {
+            background-color: lighten($danger-bg-color, 5%);
+          }
+        }
+
+        &.active {
+          color: $accent-color;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .sales {
+        flex: 0 0 50px;
+      }
+
+      .earnings {
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        padding-right: 15px;
+
+        .change {
+          display: inline-block;
+
+          percentage-change {
+            display: inline-block;
+          }
+        }
+
+        .separator {
+          margin: 0 10px;
+        }
+      }
+
+      .flex-table-row {
+        padding: 0;
+      }
+
+      .flex-table-header .flex-table-item {
+        color: $text-color;
+        font-weight: 500 !important;
+        font-size: 1.4rem;
+      }
+
+    }
+
+
+
+
+    > .item {
+      flex: 0 0 32.5%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid $border-color;
+      background-color: $reports-panel-background-color;
+
+      > .info {
+        margin-left: 10px;
+        flex: 1 1 auto;
+
+        > .amount {
+          font-weight: 500;
+          font-size: 1.8rem;
+          position: relative;
+
+          > .less-emphasis {
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-weight: 400;
+            font-size: 1.1rem;
+          }
+        }
+
+        > .name {
+          color: $text-color-secondary;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  
+  .totals {
+    display: flex;
+    margin: 20px 0 15px;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 2px solid $border-color;
+
+    > .box {
+      flex: 0 0 32%;
+      width: 32%;
+      padding: 15px;
+      border: 1px solid $border-color;
+
+      > .number {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 500;
+        color: $hc-title-text-color;
+      }
+
+      > .text {
+        text-align: center;
+        color: $text-color-secondary;
+      }
+    }
+  }
+}

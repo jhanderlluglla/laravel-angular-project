@@ -1,0 +1,26 @@
+<div class="backdrop"></div>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" trans>Update Reply</h2>
+        <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <div class="many-inputs">
+        <div class="input-container">
+            <text-editor inlineUploadType="ticket" [minHeight]="300" (onFileUpload)="uploadFiles($event)"></text-editor>
+
+            <upload-progress-bar></upload-progress-bar>
+
+            <div class="error" *ngIf="errors.body">{{errors.body}}</div>
+            <div class="error" *ngIf="errors.attachments">{{errors.attachments}}</div>
+
+            <attachments-list [attachments]="attachments" *ngIf="attachments.length" (onRemoveAttachment)="removeAttachment($event)"></attachments-list>
+        </div>
+    </div>
+
+    <div class="buttons right">
+        <button (click)="close()" type="button" class="button cancel cancel-button" trans>Cancel</button>
+        <button type="submit" class="button primary submit-button" (click)="confirm()" trans>Update</button>
+    </div>
+</div>

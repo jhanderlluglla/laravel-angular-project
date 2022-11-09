@@ -1,0 +1,123 @@
+@import "../../assets/scss/variables";
+
+.button, a.btn {
+  color: $button-text-color;
+  background-color: $button-color;
+  padding: 0 8px;
+  border: 1px solid $button-border-color;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  min-width: 88px;
+  line-height: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+
+  > svg-icon {
+    display: block;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.fab {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    min-width: 0;
+    border-radius: 50%;
+    font-size: 1.7rem;
+  }
+
+  &.primary {
+    background-color: $primary-button-color;
+    color: $primary-button-text-color;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    border: none;
+
+    &:hover {
+      background-color: darken($primary-button-color, 5%);
+    }
+  }
+
+  &.cancel {
+    background-color: transparent;
+    border: none;
+    color: rgba(0, 0, 0, .87);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.flat {
+    background-color: $flat-button-background-color;
+    box-shadow: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 28px;
+    color: $flat-button-text-color;
+
+    &:hover {
+      background-color: rgba(158, 158, 158, 0.4)
+    }
+  }
+
+  &.danger {
+    background-color: $danger-button-color;
+    color: $danger-button-text-color;
+    border-color: $danger-button-border-color;
+
+    &:hover {
+      background-color: darken($danger-button-color, 5%);
+    }
+  }
+
+  &:disabled {
+    background-color: #E1E1E1;
+    box-shadow: none;
+    color: #B7B7B7;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #E1E1E1;
+    }
+  }
+}
+
+.icon-button {
+  line-height: normal;
+  width: $default-svg-icon-size;
+  height: $default-svg-icon-size;
+  padding: 0;
+
+  > svg-icon {
+    vertical-align: sub;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+button.no-style {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  border-radius: 0;
+  min-width: initial;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  outline: none;
+}

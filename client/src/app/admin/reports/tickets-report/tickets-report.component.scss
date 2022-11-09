@@ -1,0 +1,283 @@
+@import "../../../../assets/scss/variables";
+
+tickets-report {
+  display: block;
+
+  .report {
+    display: flex;
+    position: relative;
+
+    .left-col {
+      flex: 0 0 60%;
+      width: 60%;
+      margin-right: 20px;
+    }
+
+    .right-col {
+      flex: 1 1 auto;
+    }
+
+    .report-panels-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 100%;
+
+      > .report-panel {
+        flex: 0 0 49%;
+        width: 49%;
+      }
+    }
+    
+    .report-panel {
+      background-color: $admin-table-background-color;
+      border: 1px solid $border-color;
+      border-radius: 3px;
+      margin-bottom: 20px;
+      flex: 1 1 auto;
+
+      &.ticket-stats {
+        .chart-container {
+          margin: 25px 25px 0 15px;
+        }
+      }
+
+      > .header {
+        padding: 10px;
+        font-size: 1.6rem;
+        color: $hc-title-text-color;
+        border-bottom: 1px solid $border-color;
+      }
+
+      > .body {
+        position: relative;
+
+        > .overall-stats {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid $border-color;
+
+          > .box {
+            flex: 0 0 20%;
+            width: 20%;
+            text-align: center;
+            border-right: 1px solid $border-color;
+            padding: 25px 0;
+            position: relative;
+
+            &.new-tickets {
+              color: $accent-color;
+            }
+
+            &.solved-tickets {
+              color: $success-bg-color;
+            }
+
+            &:last-of-type {
+              border-right: none;
+            }
+
+            > .value {
+              font-weight: 500;
+              font-size: 1.8rem;
+
+              > percentage-change {
+                font-size: 1.3rem;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+              }
+            }
+
+            > .name {
+              color: $text-color-secondary;
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .chart-container {
+      height: $chart-height;
+      position: relative;
+
+      &.doughnut-chart {
+        height: $chart-height - 45;
+        margin: 15px 0 15px 10px;
+      }
+    }
+  }
+
+  .filters {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    > .left, > .right {
+      flex: 0 0 49%;
+      width: 49%;
+      background-color: $reports-panel-background-color;
+      border: 1px solid $border-color;
+      padding: 15px;
+      text-align: center;
+
+      > .cancel-compare {
+        font-size: 1.6rem;
+        min-width: 0;
+        background-color: $danger-bg-color;
+        color: $danger-text-color;
+        padding: 0 4px;
+        height: 31px;
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+    }
+
+    .range-select {
+      margin-right: 7px;
+
+      > label {
+        font-weight: 500;
+      }
+    }
+
+    .date-inputs {
+      margin-right: 7px;
+      width: auto;
+      display: inline-block;
+
+      .with-calendar {
+        position: relative;
+
+        > input {
+          padding-right: 30px;
+          max-width: 140px;
+        }
+
+        datepicker {
+          position: absolute;
+          right: 4px;
+          top: 3px;
+          color: $icon-color-dark;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .input-container {
+      display: inline-block;
+      width: auto;
+
+      > input, select {
+        height: 31px;
+        line-height: 31px;
+        width: auto;
+      }
+    }
+
+    .primary {
+      height: 31px;
+      line-height: 31px;
+      vertical-align: middle;
+      box-shadow: none;
+      font-size: 1.4rem;
+      font-weight: normal;
+      text-transform: none;
+    }
+  }
+
+  .no-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    background-color: $admin-table-background-color;
+
+    > .text {
+      border: 1px solid $border-color;
+      background-color: $reports-panel-background-color;
+      padding: 20px 30px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .first-response-chart {
+    .overall {
+      margin: 20px auto;
+      text-align: center;
+
+      > .value {
+        font-size: 2.5rem;
+
+        > percentage-change {
+          font-size: 1.3rem;
+          display: inline-block;
+        }
+      }
+
+      > .name {
+        color: $text-color-secondary;
+        font-size: 1.5rem;
+      }
+    }
+
+    .chart-container {
+      margin: 0 25px 10px 15px;
+      height: $chart-height + 15;
+    }
+  }
+
+  .agents-chart {
+    padding-top: 10px;
+    overflow: auto;
+
+    .flex-table-row {
+      padding: 5px;
+      border-bottom: 1px solid lighten($border-color, 40px);
+
+      &.flex-table-header {
+        padding: 5px;
+      }
+
+      .flex-table-item {
+        height: auto;
+        font-size: 1.3rem;
+
+        percentage-change {
+          display: inline-block;
+          margin-left: 5px;
+          
+          .text {
+            display: none;
+          }
+        }
+
+        &.small {
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: 90px;
+        }
+
+        &.email {
+          color: $link-color;
+        }
+
+        &.solved {
+          color: $success-bg-color;
+        }
+      }
+    }
+  }
+
+  tickets-by-hour-chart {
+    padding: 7px 0 8px;
+  }
+
+  .busiest-time-of-day {
+    height: $chart-height;
+  }
+}

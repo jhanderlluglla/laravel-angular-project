@@ -1,0 +1,7 @@
+{
+  "/secure": {
+    "target": "http://local.yellowcard.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

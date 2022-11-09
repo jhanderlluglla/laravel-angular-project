@@ -1,0 +1,225 @@
+{
+	"name": "foo",
+	"description": "bar",
+	"actions": [
+		{
+			"action_id": 3,
+			"value": {
+				"note_text": "baz"
+			},
+			"actionModel": {
+				"id": 3,
+				"display_name": "Ticket: Add a note",
+				"name": "add_note_to_ticket",
+				"aborts_cycle": 0,
+				"updates_ticket": 1,
+				"input_config": {
+					"inputs": [
+						{
+							"type": "textarea",
+							"placeholder": "Note Text",
+							"name": "note_text"
+						}
+					]
+				}
+			}
+		}
+	],
+	"conditions": [
+		{
+			"condition_id": 1,
+			"matchType": "all",
+			"conditionModel": {
+				"id": 1,
+				"name": "Ticket: Subject",
+				"type": "ticket:subject",
+				"operators": [
+					{
+						"id": 1,
+						"name": "contains",
+						"display_name": "Contains",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 1
+						}
+					},
+					{
+						"id": 2,
+						"name": "not_contains",
+						"display_name": "Does not contain",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 2
+						}
+					},
+					{
+						"id": 3,
+						"name": "starts_with",
+						"display_name": "Starts with",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 3
+						}
+					},
+					{
+						"id": 4,
+						"name": "ends_with",
+						"display_name": "Ends with",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 4
+						}
+					},
+					{
+						"id": 5,
+						"name": "equals",
+						"display_name": "Equals",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 5
+						}
+					},
+					{
+						"id": 6,
+						"name": "not_equals",
+						"display_name": "Does not equal",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 6
+						}
+					},
+					{
+						"id": 7,
+						"name": "matches_regex",
+						"display_name": "Matches regex pattern",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 1,
+							"operator_id": 7
+						}
+					}
+				]
+			},
+			"operator_id": 1,
+			"operatorModel": {
+				"id": 1,
+				"name": "contains",
+				"display_name": "Contains",
+				"type": "primitive",
+				"value_type": "text",
+				"value_placeholder": null,
+				"validation_rules": null,
+				"pivot": {
+					"condition_id": 1,
+					"operator_id": 1
+				}
+			},
+			"value": "foo"
+		},
+		{
+			"condition_id": 2,
+			"matchType": "any",
+			"conditionModel": {
+				"id": 2,
+				"name": "Ticket: Body",
+				"type": "ticket:body",
+				"operators": [
+					{
+						"id": 1,
+						"name": "contains",
+						"display_name": "Contains",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 2,
+							"operator_id": 1
+						}
+					},
+					{
+						"id": 2,
+						"name": "not_contains",
+						"display_name": "Does not contain",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 2,
+							"operator_id": 2
+						}
+					},
+					{
+						"id": 3,
+						"name": "starts_with",
+						"display_name": "Starts with",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 2,
+							"operator_id": 3
+						}
+					},
+					{
+						"id": 4,
+						"name": "ends_with",
+						"display_name": "Ends with",
+						"type": "primitive",
+						"value_type": "text",
+						"value_placeholder": null,
+						"validation_rules": null,
+						"pivot": {
+							"condition_id": 2,
+							"operator_id": 4
+						}
+					}
+				]
+			},
+			"operator_id": 1,
+			"operatorModel": {
+				"id": 1,
+				"name": "contains",
+				"display_name": "Contains",
+				"type": "primitive",
+				"value_type": "text",
+				"value_placeholder": null,
+				"validation_rules": null,
+				"pivot": {
+					"condition_id": 2,
+					"operator_id": 1
+				}
+			},
+			"value": "bar"
+		}
+	]
+}

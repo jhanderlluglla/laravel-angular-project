@@ -1,0 +1,47 @@
+@import "../../assets/scss/variables";
+
+.tag-label {
+  display: inline-block;
+  background-color: $tag-bg-color;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-size: 1.1rem;
+  color: $tag-text-color;
+  text-transform: lowercase;
+  margin-right: 5px;
+
+  &.large {
+    background-color: #ECEFF5;
+    border-radius: 2px;
+    padding: 5px 8px;
+    font-size: 1rem;
+    color: #9099a1;
+    text-transform: uppercase;
+    font-weight: 300;
+    position: relative;
+
+    > .remove-tag-button {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+    }
+  }
+
+  .remove-tag-button {
+    vertical-align: top;
+    padding-top: 1px;
+
+    > svg-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      color: darken($tag-bg-color, 25%);
+    }
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}

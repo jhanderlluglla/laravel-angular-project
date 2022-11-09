@@ -1,0 +1,35 @@
+<div class="container">
+    <a [routerLink]="['/help-center/tickets/new']" *ngIf="paginator.hasResults() && !paginator.isLoading" class="button primary new-ticket-button" trans>New Ticket</a>
+
+    <div class="tickets-list container">
+        <a class="ticket" *ngFor="let ticket of paginator.data" [highlightOpenTicket]="ticket.tags" [routerLink]="['/help-center/tickets', ticket.id]">
+            <div class="body">
+                <div class="subject">{{ticket.subject}}</div>
+                <div class="ticket-body" *ngIf="ticket.latest_reply">{{ticket.latest_reply.body}}</div>
+                <div class="meta">
+                    <span class="date">{{ticket.updated_at_formatted}}</span>
+                    <span class="separator">|</span>
+                    <span class="replies_count">
+                    <span>{{ticket.replies_count}}</span>
+                    <span *ngIf="ticket.replies_count == 1" trans>Reply</span>
+                    <span *ngIf="ticket.replies_count > 1" trans>Replies</span>
+                </span>
+                </div>
+                <div class="tags">
+                    <ng-template ngFor let-tag [ngForOf]="ticket.tags">
+                        <div class="tag-label" *ngIf="tag.type === 'category'">{{ tag.display_name }}</div>
+                    </ng-template>
+                </div>
+            </div>
+        </a>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>You have not created any tickets yet.</span>
+            <span secondary>Nothing to show. <a routerLink="/help-center/tickets/new" trans>Create a ticket?</a></span>
+        </no-results-message>
+
+        <pagination-controls [paginator]="paginator" [defaultPerPage]="15" itemsName="Tickets"></pagination-controls>
+    </div>
+</div>
+
+<loading-indicator class="overlay" [isVisible]="paginator.isLoading"></loading-indicator>

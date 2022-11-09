@@ -1,0 +1,74 @@
+:root {
+    --hc-colors-primary: #2166d1;
+    --hc-colors-text-1: rgba(0,0,0,0.87);
+    --hc-colors-text-2: #43484d;
+    --hc-colors-text-3: #5e6977;
+    --hc-colors-link: #1e88e5;
+    --hc-colors-accent: #34ad00;
+    --hc-colors-background-1: #fff;
+    --hc-colors-background-2: #fcfcfc;
+    --hc-colors-icon: rgba(0,0,0,0.5);
+}
+
+#help-center,
+#article-host,
+#new-ticket,
+#category-component
+{
+    background-color: var(--hc-colors-background-1);
+    color: var(--hc-colors-text-1);
+}
+
+#help-center svg-icon,
+#article-host svg-icon,
+#new-ticket svg-icon,
+#category-component svg-icon
+{
+    color: rgb(181, 191, 199);
+}
+
+#customer-footer,
+#hc-compact-header .page-header
+{
+    background-color: var(--hc-colors-background-2);
+}
+
+#help-center .jumbotron,
+#hc-compact-header .navbar
+{
+    background-color: var(--hc-colors-primary);
+}
+
+#help-center .category-name,
+#help-center .child-category-name a,
+#article-host .title,
+#article-host .article-body strong,
+#article-host .related-content a,
+#new-ticket h1,
+#category-component .articles .body,
+#hc-compact-header breadcrumbs
+{
+    color: var(--hc-colors-text-2);
+}
+
+#help-center .articles-list  a,
+#hc-search-page .article .title,
+#category-component .articles .title,
+#suggested-articles-dropdown .result .title
+{
+    color: var(--hc-colors-text-3);
+}
+
+#article-host .submit-ticket-container a,
+#article-host .related-content a:hover
+{
+    color: var(--hc-colors-link);
+}
+
+#hc-compact-header breadcrumbs .active,
+#help-center .articles-list .text:hover,
+#new-ticket .right-column .header,
+#new-ticket .primary
+{
+    color: var(--hc-colors-accent);
+}

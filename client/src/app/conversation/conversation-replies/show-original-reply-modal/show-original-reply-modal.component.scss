@@ -1,0 +1,50 @@
+@import "../../../../assets/scss/variables";
+
+show-original-reply-modal.modal {
+  .modal-content {
+    width: 90%;
+    height: 90%;
+
+    > .modal-header {
+      margin-bottom: 25px;
+    }
+
+    .headers {
+      border: 1px solid $border-color;
+
+      > .header {
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid $border-color;
+
+        > .name {
+          flex: 1 1 30%;
+          font-weight: 500;
+          max-width: 200px;
+        }
+
+        > .value {
+          flex: 1 1 65%;
+          margin-left: auto;
+        }
+      }
+    }
+
+    .email-content {
+      margin-top: 40px;
+
+      > pre {
+        font-size: 1.4rem;
+        font-family: $font-family;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+
+      > .body-plain {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $border-color;
+      }
+    }
+  }
+}

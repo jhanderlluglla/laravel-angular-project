@@ -1,0 +1,53 @@
+<div class="action-bar">
+    <div class="nav">
+        <a [routerLink]="'/help-center'" class="nav-item home-nav-item" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}" trans>Home</a>
+        <a [routerLink]="'/help-center/manage/categories'" class="nav-item categories-nav-item" routerLinkActive="router-link-active" trans>Categories</a>
+        <a [routerLink]="'/help-center/manage/articles'" class="nav-item articles-nav-item" routerLinkActive="router-link-active" trans>Articles</a>
+    </div>
+    <div class="actions">
+        <div class="search-bar input-container">
+            <input type="text" placeholder="Search" class="articles-search-input" [formControl]="searchQuery" trans-placeholder>
+            <svg-icon name="search"></svg-icon>
+        </div>
+        <div class="action change-layout-action">
+            <button class="no-style grid-layout-button" (click)="setLayout('grid')" [class.active]="isLayoutActive('grid')"><svg-icon name="view-comfy"></svg-icon></button>
+            <button class="no-style list-layout-button" (click)="setLayout('list')" [class.active]="isLayoutActive('list')"><svg-icon name="view-list"></svg-icon></button>
+        </div>
+        <articles-order-select (onChange)="reloadArticles()" class="action"></articles-order-select>
+        <a class="new-article-button new-item-button" routerLink="new"><svg-icon name="add"></svg-icon> <span trans>Create New Article</span></a>
+    </div>
+</div>
+
+<div class="content">
+    <articles-list-filters (onChange)="reloadArticles()" customScrollbar="lite"></articles-list-filters>
+
+    <div class="articles-list-container">
+        <div class="scroll-container" customScrollbar>
+            <div class="articles-list" [ngClass]="selectedLayout">
+                <div class="articles-list-item" *ngFor="let article of paginator.data" (click)="goToUpdateArticle(article.id)" [class.draft]="article.draft">
+                    <button class="no-style delete-article-button" (click)="maybeDeleteArticle(article); $event.stopPropagation();" tooltip="Delete Article">
+                        <svg-icon name="delete" class="size-20"></svg-icon>
+                    </button>
+                    <div class="article-categories" *ngIf="article.categories.length">
+                        <span class="parent-category" *ngIf="article.categories[0].parent">{{article.categories[0].parent.name}} > </span>
+                        <span class="category">{{article.categories[0].name}}</span>
+                    </div>
+                    <div class="article-title">{{article.title}}</div>
+                    <div class="article-body">{{article.body}}</div>
+                    <div class="article-tags">
+                        <span class="tag-label large" *ngFor="let tag of article.tags">{{tag.name}}</span>
+                    </div>
+                </div>
+
+                <no-results-message *ngIf="paginator.doesNotHaveResults()">
+                    <span primary trans>Sorry, could not find any articles.</span>
+                    <span secondary trans>Perhaps your filters were too specific, try to remove some?</span>
+                </no-results-message>
+            </div>
+        </div>
+
+        <loading-indicator class="overlay" [isVisible]="paginator.isLoading"></loading-indicator>
+
+        <pagination-controls [paginator]="paginator" itemsName="Articles"></pagination-controls>
+    </div>
+</div>

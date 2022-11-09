@@ -1,0 +1,13 @@
+@import "../../../../assets/scss/variables";
+ 
+text-preview {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+
+  > pre[class*="language-"] {
+    margin: 0;
+    height: 100%;
+  }
+}

@@ -1,0 +1,169 @@
+<agent-navbar></agent-navbar>
+
+<div class="content">
+    <aside class="sidebar" customScrollbar="lite">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="user-info">
+                    <dropdown class="avatar-dropdown" [disabled]="!detailsEditable">
+                        <img class="user-avatar" src="{{user.avatar}}" alt="user avatar">
+                        <div class="hover-overlay"><svg-icon name="edit"></svg-icon></div>
+                        <div class="dropdown-menu" #menu>
+                            <div class="dropdown-item upload-avatar-item" #menuItem (click)="openAvatarUploadDialog()" trans>Upload</div>
+                            <div class="dropdown-item delete-avatar-item" #menuItem (click)="deleteAvatar()" trans>Remove</div>
+                        </div>
+                    </dropdown>
+                    <div class="names">
+                        <div class="name">{{user.display_name}}</div>
+                        <div class="email primary-email">{{user.email}}</div>
+                    </div>
+                </div>
+                <div class="user-details">
+                    <div class="details-row">
+                        <div class="name" trans>Details</div>
+                        <div class="input-container value">
+                            <textarea name="details" id="details" [formControl]="profile.controls['details']" [readonly]="!detailsEditable"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="details-row">
+                        <div class="name" trans>Notes</div>
+                        <div class="input-container value">
+                            <textarea name="notes" id="notes" [formControl]="profile.controls['notes']" [readonly]="!detailsEditable"></textarea>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="details-row">
+                        <div class="name" trans>Emails</div>
+                        <div class="emails value">
+                            <div class="email primary-email">
+                                {{user.email}}
+                            </div>
+                            <div class="email secondary-email" *ngFor="let email of user.secondary_emails">
+                                <button class="remove-email-button round-close-button" *ngIf="detailsEditable" (click)="removeEmail(email.address)">
+                                    <svg-icon name="close"></svg-icon>
+                                </button>
+                                <span>{{email.address}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-row" *ngIf="detailsEditable">
+                        <button class="button flat add-email-button" (click)="openAddEmailModal()" trans>Add Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header" trans>Profile Information</div>
+            <div class="panel-body">
+                <div class="user-details">
+                    <div class="details-row profile-row">
+                        <div class="name" trans>First Name</div>
+                        <div class="input-container value">
+                            <input type="text" [(ngModel)]="user.first_name">
+                        </div>
+                    </div>
+                
+                    <div class="details-row profile-row">
+                        <div class="name" trans>Last Name</div>
+                        <div class="input-container value">
+                            <input type="text" [(ngModel)]="user.last_name">
+                        </div>
+                    </div>
+
+                    <div class="details-row profile-row">
+                        <div class="name" trans>Email</div>
+                        <div class="input-container value">
+                            <input type="text" [(ngModel)]="user.email">
+                        </div>
+                    </div>
+
+                    <div class="details-row profile-row">
+                        <div class="name" trans>Phone Number</div>
+                        <div class="input-container value">
+                            <input type="text" [(ngModel)]="user.phone_number">
+                        </div>
+                    </div>
+
+                    <div class="details-row profile-row">
+                        <div class="input-container value">
+                            <button class="button primary save-button" (click)="updateUser()" trans>Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header" trans>Social</div>
+            <div class="panel-body">
+                <div class="user-details">
+                    <div class="details-row social-row">
+                        <div class="name" trans>
+                            <img src="{{settings.get('base_url')+'/assets/images/social-icons/google-plus.png'}}">
+                        </div>
+                        <div class="value">
+                            <ng-container *ngIf="getSocialAccountUsername('google') as username; else googleBlock">
+                                <span class="social-account-username">{{username}}</span>
+                                <button class="button primary disable-button" (click)="disconnectSocialAccount('google')" trans>Disable</button>
+                            </ng-container>
+                            <ng-template #googleBlock><button class="button primary enable-button" (click)="connectSocialAccount('google')" trans>Enable</button></ng-template>
+                        </div>
+                    </div>
+                    <div class="details-row social-row">
+                        <div class="name" trans>
+                            <img src="{{settings.get('base_url')+'/assets/images/social-icons/facebook.png'}}">
+                        </div>
+                        <div class="value">
+                            <ng-container *ngIf="getSocialAccountUsername('facebook') as username; else facebookBlock">
+                                <span class="social-account-username">{{username}}</span>
+                                <button class="button primary disable-button" (click)="disconnectSocialAccount('facebook')" trans>Disable</button>
+                            </ng-container>
+                            <ng-template #facebookBlock><button class="button primary enable-button" (click)="connectSocialAccount('facebook')" trans>Enable</button></ng-template>
+                        </div>
+                    </div>
+                    <div class="details-row social-row">
+                        <div class="name" trans>
+                            <img src="{{settings.get('base_url')+'/assets/images/social-icons/twitter.png'}}">
+                        </div>
+                        <div class="value">
+                            <ng-container *ngIf="getSocialAccountUsername('twitter') as username; else twitterBlock">
+                                <span class="social-account-username">{{username}}</span>
+                                <button class="button primary disable-button" (click)="disconnectSocialAccount('twitter')" trans>Disable</button>
+                            </ng-container>
+                            <ng-template #twitterBlock><button class="button primary enable-button" (click)="connectSocialAccount('twitter')" trans>Enable</button></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header" trans>Tags</div>
+            <div class="panel-body">
+                <tags-manager (onChange)="syncUserTags($event)" [readonly]="!detailsEditable"></tags-manager>
+            </div>
+        </div>
+
+        <div class="panel last">
+            <div class="panel-header" trans>Permissions & Groups</div>
+            <div class="panel-body">
+                <user-access-manager [user]="user" [readonly]="!detailsEditable"></user-access-manager>
+            </div>
+        </div>
+    </aside>
+
+    <div class="tickets">
+        <tickets-list [openTicketInModal]="true" [fetchTickets]="false" [items]="paginator.data">
+            <no-results-message [class.hidden]="!paginator.doesNotHaveResults()">
+                <span primary trans>Nothing To Display.</span>
+                <span secondary trans>Seems like this user did not create any tickets yet.</span>
+            </no-results-message>
+        </tickets-list>
+
+        <pagination-controls [paginator]="paginator" defaultPerPage="10" itemsName="Tickets"></pagination-controls>
+    </div>
+</div>

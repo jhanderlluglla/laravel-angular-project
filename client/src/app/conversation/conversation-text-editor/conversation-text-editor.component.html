@@ -1,0 +1,46 @@
+<section class="text-editor-container" [class.hidden]="!conversation.isEditorOpen()">
+    <attachments-list [attachments]="conversation.draft.get().uploads" (onRemoveAttachment)="conversation.draft.detachUpload($event)"></attachments-list>
+
+    <upload-progress-bar></upload-progress-bar>
+
+    <text-editor inlineUploadType="ticket" (onChange)="conversation.draft.setBody($event)" (onFileUpload)="conversation.draft.uploadFiles($event)" (onCtrlEnter)="submitReply()" #textEditor>
+
+        <div class="actions" customButtons>
+            <canned-replies-dropdown (onReplySelect)="applyCannedReply($event)"></canned-replies-dropdown>
+        </div>
+
+        <div class="actions last right" header>
+            <button type="button" class="no-style editor-button save-draft-button" [class.success]="conversation.draft.get().id" (click)="saveDraftAndAddToReplies()" tooltip="Save Draft">
+                <svg-icon name="check-circle"></svg-icon>
+            </button>
+
+            <button type="button" class="no-style editor-button delete-draft-button" (click)="maybeDeleteDraft()" tooltip="Discard (Esc)"><svg-icon name="delete"></svg-icon></button>
+        </div>
+
+        <div class="editor-footer" footer>
+            <div class="right">
+                <dropdown class="status-dropdown status-dropdown" *ngIf="currentUser.hasPermission('tickets.update')">
+                    <button class="status-name no-style">{{selectedStatus && selectedStatus.display_name}} <svg-icon name="keyboard-arrow-down" class="dropdown-icon"></svg-icon></button>
+                    <div class="dropdown-menu" #menu>
+                        <div class="dropdown-item" [ngClass]="tag.name" #menuItem *ngFor="let tag of mailboxTags.getStatusTags(true)" (click)="selectedStatus = tag">
+                            {{tag.display_name}}
+                        </div>
+                    </div>
+                </dropdown>
+
+                <button type="button" class="button no-style submit-button" (click)="submitReply()" [disabled]="conversation.replySaving">
+                    <span *ngIf="!conversation.replySaving" trans>Send Reply</span>
+                    <span *ngIf="conversation.replySaving" trans>Sending...</span>
+                </button>
+                <dropdown class="button-addon button no-style dropdown-left submit-button-addon" [disabled]="conversation.replySaving" [class.disabled]="conversation.replySaving">
+                    <svg-icon name="arrow-drop-down" class="caret align-middle"></svg-icon>
+                    <div class="dropdown-menu default-redirect-dropdown" #menu>
+                        <div class="dropdown-item stay-on-page" #menuItem [class.selected]="!conversation.afterReplyAction.get()" (click)="conversation.afterReplyAction.set()" trans>Send and stay on page</div>
+                        <div class="dropdown-item next-active-ticket" #menuItem [class.selected]="conversation.afterReplyAction.get() === 'next_active_ticket'" (click)="conversation.afterReplyAction.set('next_active_ticket')" trans>Send and next ticket</div>
+                        <div class="dropdown-item back_to_folder" #menuItem [class.selected]="conversation.afterReplyAction.get() === 'back_to_folder'" (click)="conversation.afterReplyAction.set('back_to_folder')" trans>Send and back to folder</div>
+                    </div>
+                </dropdown>
+            </div>
+        </div>
+    </text-editor>
+</section>

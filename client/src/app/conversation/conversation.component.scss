@@ -1,0 +1,22 @@
+@import "../../assets/scss/variables";
+
+conversation {
+  display: flex;
+  height: 100%;
+  position: relative;
+
+  > .conversation-container {
+    flex: 1 1 auto;
+
+    &.invisible {
+      visibility: hidden;
+    }
+  }
+
+  .ticket-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - #{$ticket-header-height});
+    overflow: auto;
+  }
+}

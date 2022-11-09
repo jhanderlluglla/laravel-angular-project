@@ -1,0 +1,67 @@
+<section class="flex-table-panel spacing">
+    <div class="flex-table-panel-header">
+        <div class="header-inner default" *ngIf="!selectedItems.length">
+            <div class="left">
+                <button class="button primary" (click)="showCrupdateModal()" *ngIf="currentUser.hasPermission('canned_replies.create')" trans>Add</button>
+            </div>
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search canned replies" trans-placeholder [formControl]="searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+        <div class="header-inner selected" *ngIf="selectedItems.length">
+            <div class="left">{{selectedItems.length}} <span trans>Canned Replies Selected</span></div>
+            <div class="right">
+                <button class="no-style" tooltip="Delete" *ngIf="currentUser.hasPermission('canned_replies.delete')" (click)="confirmDeletion()">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-table flex-table-bordered flex-table-compact flex-table-center-vertical">
+        <div class="flex-table-row flex-table-header">
+            <div class="flex-table-item width-1">
+                <input type="checkbox" class="pretty-checkbox" id="toggle-all-replies-checkbox" (click)="toggleAllSelectedItems()">
+                <label for="toggle-all-replies-checkbox"><span>.</span></label>
+            </div>
+            <div class="flex-table-item width-3" trans>Name</div>
+            <div class="flex-table-item" trans>Body</div>
+            <div class="flex-table-item" trans>Belongs To</div>
+            <div class="flex-table-item" trans>Created At</div>
+            <div class="flex-table-item width-1"></div>
+        </div>
+        <div class="flex-table-row" *ngFor="let reply of items; let index = index;"
+             [class.selected]="isItemSelected(reply.id)">
+            <div class="flex-table-item width-1" (click)="$event.stopPropagation()">
+                <input type="checkbox" class="pretty-checkbox" id="reply-checkbox-{{index}}"
+                       (change)="toggleSelectedItem(reply.id)" [checked]="isItemSelected(reply.id)">
+                <label for="reply-checkbox-{{index}}"><span>.</span></label>
+            </div>
+            <div class="flex-table-item width-3">{{reply.name}}</div>
+            <div class="flex-table-item"><div class="reply-body">{{reply.body}}</div></div>
+            <a class="flex-table-item no-wrap" [routerLink]="['/mailbox/users', reply.user.id]">
+                <div class="user-with-image">
+                    <img src="{{reply.user.avatar}}">
+                    <span class="text">{{reply.user.display_name}}</span>
+                </div>
+            </a>
+            <div class="flex-table-item">{{reply.created_at}}</div>
+            <div class="flex-table-item width-1 center edit-icon" tooltip="Edit Canned Reply">
+                <button class="no-style" (click)="showCrupdateModal(reply)" *ngIf="currentUser.hasPermission('canned_replies.update')">
+                    <svg-icon name="edit"></svg-icon>
+                </button>
+            </div>
+        </div>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>Nothing To Display.</span>
+            <span secondary trans>Seems like no canned replies have been created yet.</span>
+        </no-results-message>
+    </div>
+
+    <div class="flex-table-panel-footer" [class.hidden]="paginator.params.perPage >= paginator.params.total">
+        <pagination-controls [paginator]="paginator" itemsName="Canned Replies"></pagination-controls>
+    </div>
+</section>

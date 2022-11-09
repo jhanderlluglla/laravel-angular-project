@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/variables";
+
+canned-replies-dropdown {
+  display: block;
+
+  .dropdown-menu {
+    width: $dropdown-with-search-width;
+
+    > .input-container {
+      padding: 0 10px 10px 10px;
+      border-bottom: 1px solid $border-color;
+
+      > input {
+        padding: 7px;
+      }
+    }
+
+    .no-results {
+      padding: 10px 10px 0;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="backdrop"></div>
+
+<div class="modal-content" customScrollbar>
+    <div class="modal-header">
+        <h2 class="modal-title" trans>Original Message</h2>
+        <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <div class="headers">
+        <div class="header" *ngFor="let name of headerNames">
+            <div class="name">{{name}}</div>
+            <div class="value">{{originalEmail.headers[name]}}</div>
+        </div>
+    </div>
+
+    <div class="email-content">
+        <span *ngIf="!originalEmail" trans>Could not find original email for this reply.</span>
+        <pre class="body-plain" *ngIf="originalEmail && originalEmail.body.plain">{{originalEmail.body.plain}}</pre>
+        <pre class="body-html" *ngIf="originalEmail && originalEmail.body.html">{{originalEmail.body.html}}</pre>
+    </div>
+
+    <div class="buttons right">
+        <button type="submit" class="button primary submit-button" (click)="close()" trans>Done</button>
+    </div>
+</div>

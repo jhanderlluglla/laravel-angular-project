@@ -1,0 +1,42 @@
+<div class="backdrop"></div>
+
+<form class="modal-content" customScrollbar="lite" (submit)="confirm()">
+    <div class="modal-header">
+        <h2 class="modal-title">
+            <span *ngIf="updating" trans>Update Category</span>
+            <span *ngIf="!updating" trans>New Category</span>
+        </h2>
+        <button type="button" (click)="close()" class="close-button no-style"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <div class="many-inputs">
+        <div class="input-container">
+            <label for="name" trans>Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="model.name">
+            <div class="error name-error" *ngIf="errors.name">{{errors.name}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="name" trans>Parent Category</label>
+            <select type="text" id="parent_id" name="parent_id" [(ngModel)]="model.parent_id">
+                <option [ngValue]="null" trans>No Parent Category</option>
+                <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+            <div class="error parent-error" *ngIf="errors.parent_id">{{errors.parent_id}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="description" trans>Description</label>
+            <textarea type="text" id="description" name="description" [(ngModel)]="model.description" rows="8"></textarea>
+            <div class="error description-error" *ngIf="errors.description">{{errors.description}}</div>
+        </div>
+    </div>
+
+    <div class="buttons right">
+        <button (click)="close()" type="button" class="button cancel" trans>Cancel</button>
+        <button type="submit" class="button primary submit-button">
+            <span *ngIf="updating" trans>Update</span>
+            <span *ngIf="!updating" trans>Create</span>
+        </button>
+    </div>
+</form>

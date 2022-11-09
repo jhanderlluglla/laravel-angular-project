@@ -1,0 +1,99 @@
+@import "../../../assets/scss/variables";
+
+conversation-text-editor {
+  display: block;
+  width: 100%;
+
+  > .text-editor-container {
+    margin: 0 25px 25px 25px;
+  }
+
+  > attachments-list {
+    border-bottom: 1px dotted $border-color;
+    padding-bottom: 10px;
+
+    > .attachments-list-item {
+      background-color: $text-editor-header-background-color;
+    }
+  }
+
+  .draft-save-notification {
+    font-weight: 500;
+    color: $text-color-secondary;
+    transition: opacity 0.5s ease;
+    cursor: default;
+    opacity: 0;
+    vertical-align: super;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  .editor-footer {
+    > .right {
+      height: 100%;
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .status-dropdown {
+        height: $text-editor-header-height - 11px;
+        margin: 5px 15px 5px 0;
+        color: $text-color-secondary;
+        font-weight: 500;
+
+        > .status-name {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+
+          > svg-icon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .dropdown-item {
+          text-transform: capitalize;
+        }
+      }
+
+      .button {
+        display: block;
+        height: $text-editor-header-height;
+        background-color: $text-editor-submit-button-bg-color;
+        color: $text-editor-submit-button-color;
+        padding: 0 15px;
+        border: 1px solid $text-editor-button-color;
+        position: relative;
+        top: -1px;
+        right: -1px;
+        flex: 1 1 auto;
+
+        > svg-icon {
+          height: 100%;
+        }
+
+        &:disabled, &.disabled {
+          background-color: lighten($text-editor-submit-button-bg-color, 15%);
+          border-color: lighten($text-editor-button-color, 15%);
+          pointer-events: none;
+        }
+      }
+
+      .button-addon {
+        border-left: 1px solid lighten($text-editor-button-color, 2%);
+        padding: 0 7px;
+        min-width: initial;
+        border-radius: 0;
+      }
+
+      .default-redirect-dropdown > .dropdown-item.selected {
+        font-weight: 500;
+      }
+    }
+  }
+}

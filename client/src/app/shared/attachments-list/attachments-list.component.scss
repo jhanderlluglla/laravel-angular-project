@@ -1,0 +1,79 @@
+@import "../../../assets/scss/variables";
+
+attachments-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .attachments-list-item {
+    border: 1px solid $border-color;
+    margin: $attachment-margin;
+    position: relative;
+    cursor: pointer;
+    height: $attachment-height;
+    border-radius: 3px;
+    flex: 0 1 auto;
+    min-width: 200px;
+    padding: 0 5px;
+
+    > .attachment-info {
+      line-height: $attachment-height;
+      display: inline-block;
+      vertical-align: middle;
+
+      &.name {
+        max-width: $attachment-width - 65px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $attachment-text-color;
+        font-weight: 500;
+      }
+
+      &.type-icon {
+        margin-right: 3px;
+        line-height: $attachment-height - 3px;
+
+        > .icon-image {
+          color: $image-file-color;
+        }
+
+        > .icon-volume-up {
+          color: $audio-file-color;
+        }
+
+        > .icon-videocam {
+          color: $video-file-color;
+        }
+
+        > .icon-insert-drive-file {
+          color: $text-file-color;
+        }
+
+        > .icon-assignment {
+          color: $document-file-color;
+        }
+      }
+    }
+
+    > .size {
+      font-size: 1.1rem;
+      margin: 0 10px 0 5px;
+      color: lighten($attachment-text-color, 25%);
+    }
+
+    > .remove-attachment {
+      vertical-align: middle;
+      color: $text-color-secondary;
+
+      &:hover {
+        color: $text-color;
+      }
+    }
+
+    &:hover {
+      .name {
+        text-decoration: underline;
+      }
+    }
+  }
+}

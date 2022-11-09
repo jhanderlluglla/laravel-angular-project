@@ -1,0 +1,48 @@
+<div class="backdrop light"></div>
+
+<div class="scroll-container" customScrollbar>
+    <button type="button" (click)="close()" class="close-button no-style icon-button absolute-button"><svg-icon name="close"></svg-icon></button>
+
+    <div class="modal-content">
+        <div class="input-container search-input">
+            <input type="text" placeholder="Search for anything..." trans-placeholder [formControl]="searchQueryControl">
+        </div>
+
+        <div class="search-results">
+            <div class="tab-menu">
+                <div class="tab-menu-item tickets-menu-item" (click)="setActiveTab('tickets')" [class.active]="activeTabIs('tickets')">{{results.tickets['total']}} <span trans>Tickets</span></div>
+                <div class="tab-menu-item users-menu-item" (click)="setActiveTab('users')" [class.active]="activeTabIs('users')">{{results.users['total']}} <span trans>Users</span></div>
+                <div class="tab-menu-item articles-menu-item" (click)="setActiveTab('articles')" [class.active]="activeTabIs('articles')">{{results.articles['total']}} <span trans>Articles</span></div>
+            </div>
+            <div class="tabs">
+                <div class="tab tickets-tab" [class.hidden]="!activeTabIs('tickets')">
+                    <tickets-list [fetchTickets]="false" [openTicketInModal]="true" [items]="results.tickets['data'] || []"></tickets-list>
+                    <pagination-controls [paginator]="paginators.tickets" itemsName="Tickets"></pagination-controls>
+                </div>
+                <div class="tab users-tab" [class.hidden]="!activeTabIs('users')">
+                    <a class="user" *ngFor="let user of results.users['data']" [routerLink]="['/mailbox/users', user.id]">
+                        <img class="avatar" src="{{user.avatar}}" alt="customer avatar">
+                        <div class="text">
+                            <div class="title">{{user.display_name}}</div>
+                            <div class="body">{{user.email}}</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tab articles-tab" [class.hidden]="!activeTabIs('articles')">
+                    <div class="articles-list">
+                        <a class="article" *ngFor="let article of results.articles['data']" [routerLink]="urls.getArticleLink(article)">
+                            <svg-icon name="description"></svg-icon>
+                            <div class="article-info">
+                                <div class="title">{{article.title}}</div>
+                                <div class="body">{{article.body}}</div>
+                            </div>
+                        </a>
+                    </div>
+                    <pagination-controls [paginator]="paginators.articles" itemsName="Articles"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <loading-indicator class="overlay" [isVisible]="isSearching"></loading-indicator>
+</div>

@@ -1,0 +1,63 @@
+@import "../../../assets/scss/variables";
+
+file-preview-modal.modal {
+
+  > .modal-content {
+    padding: 0;
+    overflow: hidden;
+    height: inherit;
+    width: inherit;
+    max-height: 90%;
+    max-width: 90%;
+
+    > .modal-header {
+      display: flex;
+      align-items: center;
+      background-color: $file-preview-modal-header-bg-color;
+      color: $file-preview-modal-header-text-color;
+      height: $file-preview-modal-header-height;
+      margin: 0;
+      padding: 0 15px;
+      box-shadow: $navbar-boxshadow;
+      z-index: 1;
+      font-size: 1.6rem;
+
+      > .close-button {
+        color: $file-preview-modal-header-text-color;
+      }
+
+      .title, .file-name, .actions {
+        flex: 1 1 auto;
+      }
+
+      > .file-name {
+        text-align: center;
+      }
+
+      > .actions {
+        text-align: right;
+        padding-right: 70px;
+
+        > .download-button {
+          background-color: lighten($file-preview-modal-header-bg-color, 5%);
+          box-shadow: $box-shadow-1;
+          padding-right: 15px;
+
+          > svg-icon {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  file-preview {
+    height: calc(100% - #{$file-preview-modal-header-height});
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+}

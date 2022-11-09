@@ -1,0 +1,107 @@
+@import "../../../assets/scss/variables";
+
+new-ticket {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  border-top: 1px solid $border-color-light;
+
+  > .left-column {
+    flex: 0 0 70%;
+    padding: 45px 20px;
+
+    > form {
+      margin: 0 auto;
+      width: 660px;
+    }
+  }
+
+  > .right-column {
+    flex: 0 0 30%;
+    border-left: 1px solid $border-color-light;
+    padding: 45px 30px;
+
+    > .header {
+      font-size: 2.1rem;
+      color: $accent-color;
+      font-weight: 500;
+      margin-bottom: 35px;
+    }
+
+    .tip-container {
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+
+      > .title {
+        font-weight: 400;
+      }
+
+      > .content {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .input-container {
+    margin-bottom: 25px;
+
+    .input-container {
+      margin-bottom: 0;
+    }
+
+    input, select {
+      max-height: 50px;
+      height: 50px;
+      border-radius: 2px;
+      border-color: $border-color;
+    }
+
+    label {
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    > text-editor {
+      border-color: $border-color;
+      border-radius: 2px;
+    }
+  }
+
+  .errors {
+    margin-top: 7px;
+    color: $danger-bg-color;
+  }
+
+  h1 {
+    margin: 0 0 25px;
+    color: $hc-title-text-color;
+    font-weight: 300;
+    font-size: 4rem;
+  }
+
+  .buttons {
+    margin-bottom: 15px;
+  }
+
+  @media only screen and (max-width: $tablet) {
+    .left-column {
+      flex: 0 0 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      > form {
+        width: auto;
+      }
+    }
+
+    .right-column {
+      flex: 0 0 100%;
+      border-bottom: 1px solid $border-color-light;
+      margin-bottom: 10px;
+      padding: 20px 30px 0 30px;
+    }
+  }
+}

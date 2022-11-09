@@ -1,0 +1,96 @@
+<nav class="navbar">
+    <div class="nav-content">
+        <a class="nav-group" [routerLink]="['/']">
+            <img class="logo" *ngIf="settings.has('branding.hc_logo')" [src]="settings.get('branding.hc_logo')" alt="Agent logo">
+            <div class="text-logo" *ngIf="!settings.has('branding.hc_logo')">{{settings.get('branding.site_name')}}</div>
+        </a>
+
+        <div class="nav-group left flex-grow-none">
+            <div class="toggle-sidebar nav-item">
+                <button class="no-style" (click)="leftColumnIsHidden = !leftColumnIsHidden" tooltip="Toggle Sidebar"><svg-icon name="menu"></svg-icon></button>
+            </div>
+        </div>
+
+        <div class="nav-group right">
+            <logged-in-user-widget class="nav-item"></logged-in-user-widget>
+        </div>
+    </div>
+</nav>
+
+<section class="content">
+    <aside class="left-column" [class.closed]="leftColumnIsHidden">
+        <div class="menu-items">
+            <a class="menu-item" routerLink="reports" *ngIf="currentUser.hasPermission('reports.view')" routerLinkActive="router-link-active">
+                <svg-icon name="pie-chart"></svg-icon>
+                <span trans>Reports</span>
+            </a>
+            <a class="menu-item" routerLink="appearance" *ngIf="currentUser.hasPermission('appearance.update')" routerLinkActive="router-link-active">
+                <svg-icon name="style"></svg-icon>
+                <span trans>Appearance</span>
+            </a>
+            <a class="menu-item" routerLink="settings" *ngIf="currentUser.hasPermission('settings.view')" routerLinkActive="router-link-active">
+                <svg-icon name="settings"></svg-icon>
+                <span trans>Settings</span>
+            </a>
+            <a class="menu-item" routerLink="triggers" *ngIf="currentUser.hasPermission('triggers.view')" routerLinkActive="router-link-active">
+                <svg-icon name="device-hub"></svg-icon>
+                <span trans>Triggers</span>
+            </a>
+            <a class="menu-item" routerLink="tags" *ngIf="currentUser.hasPermission('tags.view')" routerLinkActive="router-link-active">
+                <svg-icon name="local-offer"></svg-icon>
+                <span trans>Tags</span>
+            </a>
+            <a class="menu-item" routerLink="supervisors" routerLinkActive="router-link-active">
+                <svg-icon name="person"></svg-icon>
+                <span trans>Supervisors</span>
+            </a>
+            <a class="menu-item" routerLink="stages" routerLinkActive="router-link-active">
+                <svg-icon name="view-comfy"></svg-icon>
+                <span trans>Stages</span>
+            </a>
+            <a class="menu-item" routerLink="priorities" routerLinkActive="router-link-active">
+                <svg-icon name="format-list-numbered"></svg-icon>
+                <span trans>Priorities</span>
+            </a>
+            <a class="menu-item" routerLink="escalation-rules" routerLinkActive="router-link-active">
+                <svg-icon name="link"></svg-icon>
+                <span trans>Escalation Rules</span>
+            </a>
+            <a class="menu-item" routerLink="tickets" *ngIf="currentUser.hasPermission('tickets.view')" routerLinkActive="router-link-active">
+                <svg-icon name="folder"></svg-icon>
+                <span trans>Tickets</span>
+            </a>
+            <a class="menu-item" routerLink="users" *ngIf="currentUser.hasPermission('users.view')" routerLinkActive="router-link-active">
+                <svg-icon name="person"></svg-icon>
+                <span trans>Users</span>
+            </a>
+            <a class="menu-item" routerLink="groups" *ngIf="currentUser.hasPermission('groups.view')" routerLinkActive="router-link-active">
+                <svg-icon name="people"></svg-icon>
+                <span trans>Groups</span>
+            </a>
+            <a class="menu-item" routerLink="pages" *ngIf="currentUser.hasPermission('pages.view')" routerLinkActive="router-link-active">
+                <svg-icon name="insert-drive-file"></svg-icon>
+                <span trans>Pages</span>
+            </a>
+            <a class="menu-item" routerLink="canned-replies" *ngIf="currentUser.hasPermission('canned_replies.view')" routerLinkActive="router-link-active">
+                <svg-icon name="comment"></svg-icon>
+                <span trans>Canned Replies</span>
+            </a>
+            <a class="menu-item" routerLink="translations" *ngIf="currentUser.hasPermission('localizations.view')" routerLinkActive="router-link-active">
+                <svg-icon name="translate"></svg-icon>
+                <span trans>Translations</span>
+            </a>
+            <a class="menu-item" routerLink="mail-templates" *ngIf="currentUser.hasPermission('mail_templates.view')" routerLinkActive="router-link-active">
+                <svg-icon name="mail"></svg-icon>
+                <span trans>Mail Templates</span>
+            </a>
+        </div>
+        <div class="version">
+            Version: {{settings.get('version')}}
+        </div>
+    </aside>
+
+    <div class="content-inner">
+        <router-outlet></router-outlet>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+<agent-navbar></agent-navbar>
+
+<div class="mailbox-container">
+    <aside class="left-column">
+        <section class="aside-container status-tags" *ngIf="mailboxTags.hasStatusTags()">
+            <div class="aside-container-title"><svg-icon class="title-icon" name="inbox-custom"></svg-icon> <span class="aside-container-name" trans>Inbox</span></div>
+            <div class="status-tag" *ngFor="let tag of mailboxTags.getStatusTags()">
+                <a [routerLink]="['/mailbox/tickets', 'tag', tag.id]" class="aside-nav-item" [ngClass]="tag.name" [class.router-link-active]="mailboxTags.activeTagIs(tag.id)">
+                    <span class="tag-name">{{tag.display_name}}</span>
+                    <span class="label tickets-count" [class.hidden]="!tag.tickets_count">{{ tag.tickets_count }}</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="aside-container category-tags " *ngIf="mailboxTags.hasCategoryTags()">
+            <div class="aside-container-title"><svg-icon class="title-icon" name="box-filled-custom"></svg-icon> <span class="aside-container-name" trans>Folders</span></div>
+            <div class="category-tag" *ngFor="let tag of mailboxTags.getCategoryTags()">
+                <a [routerLink]="['/mailbox/tickets', 'tag', tag.id]" class="aside-nav-item" [class.router-link-active]="mailboxTags.activeTagIs(tag.id)">
+                    <span class="tag-name">{{tag.display_name}}</span>
+                    <span class="label tickets-count" [class.hidden]="!tag.tickets_count">{{tag.tickets_count}}</span>
+                </a>
+            </div>
+        </section>
+    </aside>
+
+    <section class="right-column">
+        <router-outlet></router-outlet>
+    </section>
+</div>
+

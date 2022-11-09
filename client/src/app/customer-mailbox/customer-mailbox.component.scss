@@ -1,0 +1,14 @@
+@import "../../assets/scss/variables";
+
+customer-mailbox {
+  display: block;
+  height: 100%;
+
+  > .scroll-container {
+    height: 100%;
+
+    > customer-conversation, > customer-tickets-list, > new-ticket {
+      min-height: $hc-page-content-height;
+    }
+  }
+}

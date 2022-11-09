@@ -1,0 +1,307 @@
+//Sizes for media queries
+$phone: 320px;
+$tablet: 641px;
+$laptop: 961px;
+$desktop: 1281px;
+
+//Global Colors
+$primary-color: #2e73de;
+$primary-color-light: lighten($primary-color, 5%);
+$primary-color-dark: darken($primary-color, 5%);
+$accent-color: #34AD00;
+$accent-text-color: #fff;
+$hover-color: lighten($primary-color, 43%);
+$link-color: #1E88E5;
+$success-bg-color: #4CAF50;
+$success-text-color: #fff;
+$danger-bg-color: #F44336;
+$danger-text-color: #fff;
+$body-bg-color: #fff;
+$gray-bg-color: #FAFAFA;
+$border-color: #E0E0E0;
+$border-color-light: #eff1f2;
+
+//Box Shadows
+$box-shadow-1: 0 1px 2px rgba(0,0,0,0.15);
+$box-shadow-2: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+$box-shadow-3: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+
+//Text Colors
+$font-family: 'Century Gothic';
+$text-color: rgba(0,0,0,.87);
+$text-color-secondary: rgba(0,0,0,.54);
+$text-color-disabled: rgba(0,0,0,.38);
+$text-color-darker: #898B8C;
+
+//Icons
+$icon-color-dark: rgba(0, 0, 0, 0.5);
+$icon-color-light: rgba(0, 0, 0, 0.3);
+$default-svg-icon-size: 24px;
+
+//Conversation Page
+$note-background-color: #fffcea;
+$note-text-color: #836f60;
+$note-border-color: #c8bcb4;
+$ticket-header-height: 60px;
+$conversation-right-col-width: 240px;
+$conversation-right-col-background-color: #FAFAFA;
+
+//Buttons
+$button-color: lighten($gray-bg-color, 4%);
+$button-text-color: $text-color;
+$button-border-color: lighten($border-color, 10%);
+$primary-button-color: $accent-color;
+$primary-button-text-color: #fff;
+$danger-button-color: #ea6153;
+$danger-button-text-color: $primary-button-text-color;
+$danger-button-border-color: #ea6153;
+$flat-button-background-color: rgba(158, 158, 158, 0.2);
+$flat-button-text-color: #555;
+
+//Panels
+$panel-background-color: #fff;
+$panel-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+$panel-border-color: #e5e5e5;
+$panel-header-color: darken(#fff, 4%);
+$panel-footer-color: $gray-bg-color;
+$panel-header-text-color: $text-color;
+
+//Dashboard
+$left-col-width: 225px;
+$left-col-bg-color: #FAFAFA;
+$left-col-text-color: darken(#A0A5AC, 10%);
+$left-col-title-color: rgba(0,0,0,0.54);
+$left-col-hover-color: darken(#F5F6F7, 2%);
+$left-col-title-font-size: 1.4rem;
+$left-col-link-font-size: 1.4rem;
+$left-col-border-color: transparent;
+$left-col-item-padding: 10px 0 10px 41px;
+$left-col-compact-item-padding: 8px 0 8px 15px;
+$left-col-title-padding: 20px 15px 15px 15px;
+$left-col-compact-title-padding: 12px 5px 12px 12px;
+
+$pagination-controls-height: 40px;
+$pagination-controls-bg-color: transparent;
+$pagination-controls-text-color: $text-color-secondary;
+
+//Navbar
+$navbar-height: 64px;
+$navbar-boxshadow: 0 1px 8px rgba(0,0,0,.3);
+$navbar-background-color: $primary-color-dark;
+$navbar-text-color: rgba(255,255,255,.65);
+$navbar-searchbar-background-color: $primary-color;
+
+//Tags
+$tag-bg-color: #AAAEB7;
+$tag-text-color: #fff;
+
+//File preview
+$file-preview-modal-background-color: #FBFBFB;
+$file-preview-modal-header-height: 70px;
+$file-preview-modal-header-bg-color: $primary-color;
+$file-preview-modal-header-text-color: $primary-button-text-color;
+$file-preview-modal-accent-color: rgba(0,0,0,0.4);
+$file-preview-modal-accent-text-color: $accent-text-color;
+
+//Tooltips and Toasts
+$toast-default-background-color: #323232;
+$toast-default-text-color: #fff;
+$toast-error-background-color: $danger-bg-color;
+$toast-error-text-color: $danger-text-color;
+$toast-success-background-color: $success-bg-color;
+$toast-success-text-color: $success-text-color;
+$toast-border-radius: 2px;
+$toast-height: 20px;
+$toast-padding: 14px 20px;
+$toast-min-width: 288px + 48px;
+$toast-max-width: 568px;
+$toast-font-size: 1.4rem;
+$toast-box-shadow: $box-shadow-3;
+
+//Loading Indicators
+$loading-indicator-color: $accent-color;
+$loading-indicator-width: 80px;
+$loading-indicator-height: 70px;
+
+//Help center (admin side)
+$hc-manage-bg-color: #EEEEEE;
+
+//New article page
+$new-article-right-col-width: 302px;
+$new-article-max-page-width: 1300px;
+$new-article-page-background-color: $hc-manage-bg-color;
+$new-article-page-box-shadow: $box-shadow-1;
+$new-article-page-border-color: #d3d3d3 #d3d3d3 #c4c4c4 #d3d3d3;
+$new-article-page-border-radius: 4px;
+
+//Categories list
+$categories-page-max-width: 1300px;
+$categories-page-item-bg-color: #fff;
+$categories-page-item-padding: 15px;
+$categories-page-item-border: none;
+$categories-page-item-box-shadow: $box-shadow-1;
+$categories-page-action-bar-bg-color: #fff;
+$categories-page-action-bar-height: 55px;
+
+//Help center (user facing side)
+$hc-header-height: 404px;
+$hc-background-color: #fff;
+$hc-header-padding: 34px 50px 65px;
+$hc-front-header-color: #242C31;
+$hc-front-header-text-color: #fff;
+$hc-page-max-width: 1190px;
+$hc-title-text-color: #43484d;
+$hc-text-color: #5e6977;
+$hc-search-bar-height: 60px;
+$hc-article-icon-color: rgb(181, 191, 199);
+$hc-breadcrumb-background-color: #F9F9F9;
+$hc-sidebar-width: 375px;
+$hc-compact-header-navbar-height: 65px;
+$hc-compact-header-sub-header-height: 108px;
+$hc-footer-height: 70px;
+$hc-footer-background-color: #fcfcfc;
+$hc-page-content-height: calc(100% - #{$hc-compact-header-navbar-height + $hc-compact-header-sub-header-height + $hc-footer-height + 1});
+$hc-search-bar-height: 60px;
+$hc-search-results-spacing: 20px;
+
+
+$login-page-border-color: darken($gray-bg-color, 5%);
+$login-page-panel-background-color: lighten($gray-bg-color, 2%);
+
+$admin-background-color: $left-col-bg-color;
+$admin-left-col-background-color: #fff;
+$admin-left-col-text-color: rgba(0,0,0,.64);
+$admin-navbar-text-color: #777;
+$admin-navbar-background-color: #FAFAFA;
+$admin-navbar-height: 70px;
+$admin-table-background-color: #fff;
+
+//Table panel and table styles
+$table-panel-active-header-background-color: $hc-breadcrumb-background-color;
+$table-panel-active-header-text-color: $text-color-secondary;
+$table-panel-active-header-font-size: 1.5rem;
+$table-panel-header-height: 38px;
+$table-panel-header-padding: 15px;
+
+//Tables
+$table-background-color: #fff;
+$table-row-hover-background-color: $hover-color;
+$table-hover-background-color: $hover-color;
+$table-row-height: 70px;
+$table-header-height: $table-row-height;
+$table-text-less-emphasis-color: #999;
+$table-selected-row-bg-color: $table-row-hover-background-color;
+
+//Floating Toolbar
+$floating-toolbar-width: 177px;
+$floating-toolbar-wide-width: 320px;
+$floating-toolbar-bg-color: #fff;
+$floating-toolbar-item-bg-color: inherit;
+$floating-toolbar-item-height: 45px;
+$floating-toolbar-item-width: 45px;
+$floating-toolbar-text-color: $text-color;
+
+//Dropdown
+$dropdown-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+$dropdown-border-radius: 0;
+$dropdown-with-search-width: 300px;
+$dropdown-max-height: 260px;
+$dropdown-item-hover-bg-color: $table-hover-background-color;
+
+//Ticket Search Dropdown
+$ticket-search-dropdown-header-bg: #FAFAFA;
+$ticket-search-dropdown-footer-bg: $ticket-search-dropdown-header-bg;
+$ticket-search-dropdown-font-size: 1.3rem;
+$ticket-search-dropdown-top: 54px;
+
+//Reports
+$chart-height: 350px;
+$chart-header-height: 30px;
+$chart-panel-height: $chart-height + $chart-header-height;
+$reports-panel-background-color: darken($admin-table-background-color, 1%);
+
+//Social services colors
+$envato-color: #82B541;
+$facebook-color: #3b5998;
+$twitter-color: #1da1f2;
+$google-color: #d34836;
+
+//modals
+$modal-backdrop-color: rgba(33,33,33,0.48);
+$modal-content-background-color: #fff;
+$modal-content-padding: 24px;
+$modal-content-width: 530px;
+$modal-content-max-width: 90%;
+$modal-content-max-height: 95%;
+$modal-content-box-shadow: $box-shadow-3;
+$modal-content-text-color: $text-color;
+$modal-header-text-color: $text-color;
+$modal-header-font-size: 2rem;
+$modal-header-font-weight: 500;
+$modal-header-margin: 0 0 35px;
+$modal-input-hint-text-color: $text-color-secondary;
+$modal-close-button-size: 35px;
+$modal-close-button-color: $icon-color-dark;
+$modal-error-text-color: $danger-bg-color;
+$form-modal-background-color: transparentize($gray-bg-color, 0.05);
+$form-modal-cancel-button-bg-color: #fff;
+$form-modal-content-width: 750px;
+$form-modal-compact-content-width: 550px;
+$form-modal-error-text-color: $danger-bg-color;
+
+//article (view)
+$article-font-size: 1.8rem;
+$article-font-weight: 300;
+$article-line-height: 26px;
+$article-divider-color: #eaeaea;
+$article-image-border: 1px solid $border-color-light;
+$article-image-padding: 0;
+$article-image-margin: 15px auto;
+$article-image-border-radius: 4px;
+$article-title-font-size: 4.2rem;
+$article-title-font-weight: 300;
+
+$article-h1-font-size: 3.8rem;
+$article-h1-line-height: normal;
+$article-h1-margin: 0;
+$article-h1-font-weight: 300;
+
+$article-h2-font-size: 2.8rem;
+$article-h2-line-height: normal;
+$article-h2-margin: 0;
+$article-h2-font-weight: 300;
+
+$article-h3-font-size: 2.3rem;
+$article-h3-font-size: 2.3rem;
+$article-h3-line-height: normal;
+$article-h3-margin: 0 0 5px;
+$article-h3-font-weight: 300;
+
+//attachments
+$attachment-width: 180px;
+$attachment-height: 120px;
+$attachment-margin: 0 10px 10px 0;
+$attachment-background-color: #f5f5f5;
+$attachment-text-color: #777;
+$attachment-height: 33px;
+$attachment-preview-big-icon-color: #E5E5E5;
+$text-file-color: #4285F4;
+$image-file-color: #DB4437;
+$audio-file-color: #DB4437;
+$video-file-color: #DB4437;
+$document-file-color: #0F9D58;
+
+//text-editor
+$text-editor-header-background-color: $gray-bg-color;
+$text-editor-header-height: 37px;
+$text-editor-button-color: #788593;
+$text-editor-min-height: 218px;
+$text-editor-max-height: 600px;
+$text-editor-submit-button-bg-color: darken($text-editor-button-color, 5%);
+$text-editor-submit-button-color: $accent-text-color;
+$text-editor-button-icon-size: 22px;
+$text-editor-button-size: $text-editor-header-height - 1;
+$text-editor-button-padding: ($text-editor-button-size - $text-editor-button-icon-size) / 2;
+
+//inputs
+$input-height: 38px;

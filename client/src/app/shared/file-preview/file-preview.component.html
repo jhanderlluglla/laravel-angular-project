@@ -1,0 +1,15 @@
+<ng-template #container></ng-template>
+
+<div class="no-preview hidden" #noPreviewContainer>
+    <div class="text" trans>No File Preview is Available.</div>
+    <button class="button primary download-button" (click)="downloadFile()">
+        <svg-icon name="file-download" class="align-middle"></svg-icon>
+        <span trans>Download</span>
+    </button>
+</div>
+
+<loading-indicator class="loading-indicator"></loading-indicator>
+
+<div class="previous" *ngIf="files.length > 1 && index !== 0" (click)="previousFile()"><svg-icon name="chevron-left"></svg-icon></div>
+<div class="next" *ngIf="files.length > 1 && files.length != (index+1)" (click)="nextFile()"><svg-icon name="chevron-right"></svg-icon></div>
+<div class="total-files" *ngIf="files.length > 1">{{ index + 1 }} of {{ files.length }} files</div>

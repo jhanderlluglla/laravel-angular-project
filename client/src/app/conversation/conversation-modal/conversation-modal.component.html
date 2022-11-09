@@ -1,0 +1,10 @@
+<div class="backdrop light"></div>
+
+<button type="button" (click)="close()" class="close-button no-style icon-button absolute-button"><svg-icon name="close"></svg-icon></button>
+
+<div class="modal-content">
+    <conversation [hideSidebar]="true" [hideBackButton]="true"></conversation>
+    <button class="button primary merge-button" (click)="mergeTickets()" tooltip="Merge" *ngIf="this.activeTicketId">
+        <span trans>Merge</span>
+    </button>
+</div>

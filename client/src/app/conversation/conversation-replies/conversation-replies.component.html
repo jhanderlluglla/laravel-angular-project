@@ -1,0 +1,40 @@
+<div class="thread">
+    <ng-template ngFor let-reply let-last="last" [ngForOf]="conversation.replies.get()">
+        <div class="reply animated" [class.bounce]="reply['animated']" ngClass="{{reply.type}}" [class.my-reply]="reply.user_id == currentUser.get('id')" *ngIf="currentUser.hasPermission('replies.view') || reply.type !== 'notes'">
+            <img class="user-avatar" *ngIf="reply.user.avatar" src="{{reply.user.avatar}}" alt="{{reply.user.email}}">
+            <div class="reply-body">
+                <div class="message-header">
+                    <div class="customer">
+                        <span class="customer-name">
+                            <span *ngIf="currentUser.get('id') == reply.user.id" trans>You</span>
+                            <span *ngIf="currentUser.get('id') != reply.user.id">{{reply.user.display_name}}</span>
+                        </span>
+
+                        <span class="text-gray action-text" *ngIf="!last && reply.type === 'replies'" trans>replied</span>
+                        <span class="text-gray action-text" *ngIf="last && reply.type === 'replies'" trans>started the conversation</span>
+                        <span class="text-gray action-text" *ngIf="reply.type == 'notes'" trans>left a note</span>
+                        <span class="text-gray action-text" *ngIf="reply.type == 'drafts'" trans>created a draft</span>
+
+                        <span class="draft-actions" *ngIf="reply.type === 'drafts'">
+                            <button type="button" class="no-style edit-draft-button" (click)="editDraft(reply)" trans>Edit</button>
+                            <button type="button" class="no-style delete-draft-button" (click)="maybeDeleteReply(reply)" trans>Discard</button>
+                        </span>
+                    </div>
+                    <div class="meta">
+                        <span class="date">{{reply['created_at_formatted']}}</span>
+                        <dropdown class="reply-actions" *ngIf="currentUser.hasPermission('replies.update') && reply.type !== 'drafts' && currentUser.hasGroups('CFC')">
+                            <svg-icon name="more-vert"></svg-icon>
+                            <div class="dropdown-menu left" #menu>
+                                <div class="dropdown-item update-reply-button" #menuItem (click)="update(reply)" trans>Edit</div>
+                                <div class="dropdown-item delete-reply-button" #menuItem (click)="maybeDeleteReply(reply)" trans>Delete</div>
+                                <div class="dropdown-item show-original-reply-button" #menuItem (click)="showOriginalEmail(reply)" trans>Show Original</div>
+                            </div>
+                        </dropdown>
+                    </div>
+                </div>
+                <div class="message-body" [innerHTML]="reply.body"></div>
+                <attachments-list [attachments]="reply.uploads" *ngIf="reply.uploads.length"></attachments-list>
+            </div>
+        </div>
+    </ng-template>
+</div>

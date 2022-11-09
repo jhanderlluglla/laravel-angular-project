@@ -1,0 +1,10 @@
+@import "../../../assets/scss/variables";
+
+pages {
+  display: block;
+
+  .page-body {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

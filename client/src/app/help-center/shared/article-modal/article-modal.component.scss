@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/variables";
+
+article-modal.modal {
+  .modal-content {
+    width: 1000px;
+    box-shadow: none;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  .scroll-container {
+    overflow: hidden;
+  }
+}

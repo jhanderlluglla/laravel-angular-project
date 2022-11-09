@@ -1,0 +1,30 @@
+@import "assets/scss/fonts";
+@import "assets/scss/variables";
+
+//VENDOR
+@import "assets/css/normalize";
+@import "assets/css/perfect-scrollbar.min.css";
+@import "assets/css/prism.css";
+@import "assets/css/pikaday.css";
+
+//SHARED STYLES
+@import "assets/scss/animations";
+@import "assets/scss/global";
+@import "assets/scss/input";
+@import "assets/scss/buttons";
+@import "assets/scss/navbar";
+@import "assets/scss/flex-table";
+@import "assets/scss/flex-table-panel";
+@import "assets/scss/tag-label";
+@import "assets/scss/attachments";
+@import "assets/scss/panel";
+@import "assets/scss/icon-spin-animation";
+@import "assets/scss/admin-pill-nav";
+@import "assets/scss/dropdown";
+@import "assets/scss/tooltip";
+@import "assets/scss/custom-scrollbar";
+@import "assets/scss/modal";
+@import "assets/scss/auth-page";
+@import "assets/scss/pretty-checkbox";
+@import "assets/scss/round-close-button";
+@import "assets/scss/setting-checkbox";

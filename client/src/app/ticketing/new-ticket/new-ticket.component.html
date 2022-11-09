@@ -1,0 +1,79 @@
+<div class="left-column">
+    <form (ngSubmit)="createTicket()">
+        <h1>{{settings.get('hc.new-ticket.title')}}</h1>
+
+        <div class="input-container category-input-container">
+            <label for="category-select">{{settings.get('hc.new-ticket.category_label')}}</label>
+            <select name="category" id="category-select" [(ngModel)]="ticketModel.category">
+                <option [ngValue]="category" *ngFor="let category of ticketCategories">{{category.display_name}}</option>
+            </select>
+            <div class="errors category-error" *ngIf="errors['category']">{{errors['category']}}</div>
+        </div>
+
+        <div class="input-container subject-input-container">
+            <label for="subject">{{settings.get('hc.new-ticket.subject_label')}}</label>
+            <suggested-articles-drawer id="subject" (inputValue)="ticketModel.subject = $event" [category]="ticketModel.subject" trans-placeholder></suggested-articles-drawer>
+            <div class="errors subject-error" *ngIf="errors['subject']">{{errors['subject']}}</div>
+        </div>
+
+        <div class="many-inputs" *ngIf="isAgent()">
+
+            <div class="setting-checkbox">
+                <input type="checkbox" id="existing_customer" name="existing_customer" [(ngModel)]="customerModel.isExisting" class="pretty-checkbox">
+                <label for="existing_customer" trans>Existing Customer</label>
+            </div>
+
+            <div class="input-container customer-input-container" *ngIf="customerModel.isExisting">
+                <label for="customer-select">Select Customer</label>
+                <select name="customer" id="customer-select" [(ngModel)]="customerModel.customer">
+                    <option [ngValue]="customer" *ngFor="let customer of customers">{{ customer.first_name && customer.last_name ? customer.first_name + ' ' + customer.last_name : customer.email }}</option>
+                </select>
+            </div>
+
+            <div class="input-container" *ngIf="!customerModel.isExisting">
+                <label for="first_name" trans>First Name</label>
+                <input type="text" id="first_name" name="first_name" [(ngModel)]="customerModel.customer.first_name" required>
+            </div>
+
+            <div class="input-container" *ngIf="!customerModel.isExisting">
+                <label for="last_name" trans>Last Name</label>
+                <input type="text" id="last_name" name="last_name" [(ngModel)]="customerModel.customer.last_name" required>
+            </div>
+
+            <div class="input-container" *ngIf="!customerModel.isExisting">
+                <label for="email" trans>Customer Email</label>
+                <input type="text" id="email" name="email" [(ngModel)]="customerModel.customer.email">
+            </div>
+
+            <div class="input-container" *ngIf="!customerModel.isExisting">
+                <label for="phone_number" trans>Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" [(ngModel)]="customerModel.customer.phone_number">
+            </div>
+        </div>
+
+        <div class="input-container description-input-container">
+            <label for="description">{{settings.get('hc.new-ticket.description_label')}}</label>
+            <text-editor id="description" inlineUploadType="ticket" (onFileUpload)="uploadFiles($event)" (onChange)="ticketModel.body = $event" [minHeight]="230"></text-editor>
+            <upload-progress-bar></upload-progress-bar>
+            <div class="errors body-error" *ngIf="errors['body']">{{errors['body']}}</div>
+        </div>
+
+        <attachments-list [attachments]="attachments" *ngIf="attachments.length" (onRemoveAttachment)="removeAttachment($event)"></attachments-list>
+
+        <div class="buttons">
+            <button class="button primary submit-button" type="submit">{{settings.get('hc.new-ticket.submit_button_text')}}</button>
+        </div>
+    </form>
+</div>
+
+<div class="right-column">
+    <div class="header">{{settings.get('hc.new-ticket.sidebar_title')}}</div>
+
+    <div class="tips">
+        <div class="tip-container" *ngFor="let tip of settings.getJson('hc.new-ticket.sidebar_tips')">
+            <div class="title">{{tip.title}}</div>
+            <div class="content">{{tip.content}}</div>
+        </div>
+    </div>
+</div>
+<loading-indicator [isVisible]="isLoading" class="overlay"></loading-indicator>

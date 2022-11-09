@@ -1,0 +1,58 @@
+@import "../../../assets/scss/variables";
+
+customer-navbar {
+  display: block;
+
+  .navbar {
+    color: #fff;
+  }
+
+  .custom-menu-item {
+    font-weight: 500;
+    font-size: 1.5rem;
+
+      > .login {
+        background-color: $accent-color;
+        color: $accent-text-color;
+        text-align: center;
+        box-shadow: $box-shadow-2;
+        border-radius: 2px;
+        margin-left: 10px;
+
+        @media only screen and (min-width: $tablet) {
+          min-width: 110px;
+          line-height: 44px;
+          font-size: 1.6rem;
+          font-weight: 500;
+          padding: 0;
+        }
+    }
+  }
+
+  .nav-content {
+    max-width: $hc-page-max-width;
+
+    //prevent logo from shrinking
+    logo-group {
+      flex: 1 0 auto;
+    }
+
+    custom-menu {
+      justify-content: normal;
+    }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    .navbar {
+      .custom-menu-item {
+        > a {
+          padding: 5px 10px;
+        }
+      }
+
+      .login {
+        min-width: 80px;
+      }
+    }
+  }
+}

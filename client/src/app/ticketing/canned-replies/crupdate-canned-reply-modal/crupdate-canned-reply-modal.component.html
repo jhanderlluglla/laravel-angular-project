@@ -1,0 +1,39 @@
+<div class="backdrop"></div>
+
+<section class="modal-content" customScrollbar>
+    <div class="modal-header">
+        <h2 class="modal-title">
+            <span *ngIf="model.id" trans>Update Canned Reply</span>
+            <span *ngIf="!model.id" trans>New Canned Reply</span>
+        </h2>
+        <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <div class="many-inputs">
+        <div class="input-container">
+            <label for="canned-reply-name" trans>Name</label>
+            <input type="text" id="canned-reply-name" [(ngModel)]="model.name">
+            <div class="error" *ngIf="errors.name">{{errors.name}}</div>
+        </div>
+
+        <div class="input-container">
+            <label for="canned-body" trans>Canned Reply Body</label>
+            <text-editor id="canned-body" inlineUploadType="ticket" #textEditor (onFileUpload)="uploadFiles($event)" [minHeight]="300"></text-editor>
+
+            <upload-progress-bar></upload-progress-bar>
+
+            <div class="error" *ngIf="errors.body">{{errors.body}}</div>
+            <div class="error" *ngIf="errors.uploads">{{errors.uploads}}</div>
+
+            <attachments-list [attachments]="attachments" *ngIf="attachments.length" (onRemoveAttachment)="removeUpload($event)"></attachments-list>
+        </div>
+    </div>
+
+    <div class="buttons right">
+        <button (click)="close()" type="button" class="button cancel cancel-button" trans>Cancel</button>
+        <button type="submit" class="button primary submit-button" (click)="confirm()">
+            <span *ngIf="model.id" trans>Update</span>
+            <span *ngIf="!model.id" trans>Create</span>
+        </button>
+    </div>
+</section>

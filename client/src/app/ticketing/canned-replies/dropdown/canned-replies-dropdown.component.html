@@ -1,0 +1,17 @@
+<dropdown (onFirstOpen)="getCannedReplies()">
+    <button class="no-style editor-button"><svg-icon name="comment" class="dropdown-icon"></svg-icon></button>
+
+    <div class="dropdown-menu" #menu>
+        <div class="input-container"><input class="search-input" type="text" #input [formControl]="searchQuery"></div>
+
+        <div class="results">
+            <div class="dropdown-item new-canned-reply" (click)="showNewCannedReplyModal()" *ngIf="!searchQuery.value"><strong trans>Create new canned reply</strong></div>
+            <div class="dropdown-item canned-reply" *ngFor="let cannedReply of cannedReplies" (click)="selectCannedReply(cannedReply)">
+                {{cannedReply.name}}
+            </div>
+        </div>
+        <div class="no-results" *ngIf="!cannedReplies.length && loadedResultsAtLeastOnce && searchQuery.value">
+            <div><span trans>No results found for</span> <strong>{{ searchQuery.value }}</strong></div>
+        </div>
+    </div>
+</dropdown>

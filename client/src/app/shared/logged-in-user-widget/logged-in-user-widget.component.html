@@ -1,0 +1,48 @@
+<dropdown *ngIf="currentUser.isLoggedIn()">
+    <div class="avatar">
+        <img src="{{currentUser.get('avatar')}}" alt="Logged in user avatar">
+    </div>
+
+    <div class="email">{{currentUser.get('email')}} <svg-icon name="arrow-drop-down" class="dropdown-icon"></svg-icon></div>
+
+    <button class="no-style mobile-toggle"><svg-icon name="menu"></svg-icon></button>
+
+    <div class="dropdown-menu indent" #menu>
+        <ng-container>
+            <a class="dropdown-item admin-link" #menuItem routerLink="/admin" *ngIf="currentUser.hasPermission('reports.view')">
+                <svg-icon name="dashboard"></svg-icon>
+                <span trans>Admin Area</span>
+            </a>
+            <a class="dropdown-item new-ticket" #menuItem routerLink="/help-center/tickets/new">
+                <svg-icon name="add"></svg-icon>
+                <span trans>New Ticket</span>
+            </a>
+            <a class="dropdown-item agent-mailbox-link" #menuItem routerLink="/mailbox" *ngIf="currentUser.hasPermission('tickets.view')">
+                <svg-icon name="inbox"></svg-icon>
+                <span trans>Agent Mailbox</span>
+            </a>
+            <a class="dropdown-item manage-help-center-link" #menuItem routerLink="/help-center/manage" *ngIf="currentUser.hasPermission('access.help_center_manage')">
+                <svg-icon name="description"></svg-icon>
+                <span trans>Help Center</span>
+            </a>
+
+        </ng-container>
+
+        <ng-container *ngIf="!currentUser.hasPermission('tickets.view')">
+            <a class="dropdown-item tickets-link" #menuItem routerLink="/help-center/tickets">
+                <svg-icon name="inbox"></svg-icon>
+                <span trans>My Tickets</span>
+            </a>
+        </ng-container>
+
+        <a class="dropdown-item account-settings-link" #menuItem routerLink="/account/settings">
+            <svg-icon name="settings"></svg-icon>
+            <span trans>Account Settings</span>
+        </a>
+
+        <div class="dropdown-item logout-item" #menuItem (click)="auth.logOut()">
+            <svg-icon name="exit-to-app"></svg-icon>
+            <span trans>Log Out</span>
+        </div>
+    </div>
+</dropdown>

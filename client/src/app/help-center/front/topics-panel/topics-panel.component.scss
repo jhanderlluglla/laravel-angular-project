@@ -1,0 +1,37 @@
+@import "../../../../assets/scss/variables";
+
+topics-panel {
+  display: block;
+  padding: 25px;
+  align-self: flex-start;
+
+  > .title {
+    font-size: 2.1rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+  }
+
+  .category {
+    display: block;
+    padding: 15px 0 15px 40px;
+    position: relative;
+    color: $hc-title-text-color;
+
+    &:hover {
+      color: $link-color;
+    }
+
+    > svg-icon {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      width: 35px;
+      height: 35px;
+      color: $hc-article-icon-color;
+    }
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+}

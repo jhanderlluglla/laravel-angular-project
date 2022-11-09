@@ -1,0 +1,62 @@
+@import "../../../../assets/scss/variables";
+
+tags-manager {
+  display: block;
+
+  .selected-tags {
+    > .tag {
+      margin: 0 10px 10px 0;
+      display: inline-block;
+    }
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: row;
+
+    > .button {
+      width: 60px;
+      min-width: 0;
+      box-shadow: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    > input {
+      flex: 1 1 auto;
+      width: auto;
+      border-right: none;
+    }
+  }
+
+  .main-info {
+    margin-top: 5px;
+    font-size: 1.3rem;
+  }
+  
+  .existing-tags {
+    margin-top: 25px;
+
+    > p {
+      margin-bottom: 5px;
+      font-size: 1.3rem;
+      color: $text-color-secondary;
+    }
+
+    .tags-list {
+      border: 1px solid $border-color;
+      padding: 8px;
+      max-height: 60px;
+      overflow: auto;
+
+      > .tag-name {
+        display: inline-block;
+        margin-right: 6px;
+        color: $link-color;
+        text-decoration: underline;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<div class="left toolbar-actions">
+    <ng-container *ngIf="currentUser.hasPermissions(['tickets.update', 'replies.create'])">
+        <button class="no-style action back-button" (click)="navigateToTicketsList()" *ngIf="!hideBackButton" tooltip="Back (b)">
+            <svg-icon name="return-custom"></svg-icon>
+        </button>
+
+        <assign-ticket-dropdown [ticket]="conversation.get()" (onAssigned)="refreshMailboxTags()" class="action" tooltip="Assign (a)" tooltip="Assign">
+            <button class="no-style"><svg-icon name="user-custom"></svg-icon></button>
+        </assign-ticket-dropdown>
+
+        <assign-priority-ticket-dropdown [ticket]="conversation.get()" class="action" tooltip="Assign (a)" tooltip="Assign Priority">
+            <button class="no-style"><svg-icon name="format-list-numbered"></svg-icon></button>
+        </assign-priority-ticket-dropdown>
+
+        <button class="action no-style add-note-button" (click)="showNoteModal()" tooltip="Note (n)">
+            <svg-icon name="note-custom"></svg-icon>
+        </button>
+
+        <add-tag-dropdown class="action" dropdown [ticketIds]="[conversation.get().id]" (onTagAdded)="addTag($event)" tooltip="Tag (t)">
+            <button class="no-style add-tag-button"><svg-icon name="add-tag-custom"></svg-icon></button>
+        </add-tag-dropdown>
+
+        <dropdown class="ticket-status-dropdown-container action" tooltip="Status (s)" #ticketStatusDropdown>
+            <button class="no-style change-ticket-status-button">
+                <svg-icon name="flag-custom"></svg-icon>
+            </button>
+            <div class="dropdown-menu" #menu>
+                <div class="dropdown-item"
+                     #menuItem
+                     *ngFor="let tag of mailboxTags.getStatusTags(true, !currentUser.hasPermission('tickets.close'))"
+                     (click)="changeTicketStatus(tag)"
+                     [class.active]="conversation.status === tag.name"
+                     [ngClass]="tag.name"
+                >{{tag.name}}</div>
+            </div>
+        </dropdown>
+
+        <ng-content></ng-content>
+    </ng-container>
+</div>
+<div class="right ticket-info">
+    <div class="ticket-number">AP{{conversation.get().id}}</div>
+    <div class="ticket-status" [ngClass]="conversation.getStatus().name">{{conversation.getStatus().name}}</div>
+    <div class="ticket-priority" [ngClass]="conversation.getPriority().name">
+        {{conversation.getPriority().name}}
+    </div>
+</div>

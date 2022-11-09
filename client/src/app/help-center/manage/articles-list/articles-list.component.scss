@@ -1,0 +1,145 @@
+@import "../../../../assets/scss/variables";
+
+articles-list {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: $hc-manage-bg-color;
+
+  > .content {
+    display: flex;
+    height: calc(100% - #{$categories-page-action-bar-height});
+  }
+
+  articles-list-filters {
+    flex: 0 0 $new-article-right-col-width;
+  }
+
+  .articles-list-container {
+    height: 100%;
+    flex: 1 1 auto;
+
+    > .scroll-container {
+      height: calc(100% - #{$pagination-controls-height});
+    }
+
+    pagination-controls {
+      background-color: $categories-page-item-bg-color;
+    }
+  }
+
+  .articles-list {
+    height: 100%;
+    padding: 10px;
+
+    > .articles-list-item {
+      background-color: $categories-page-item-bg-color;
+      box-shadow: $box-shadow-2;
+      padding: $categories-page-item-padding;
+      border-radius: 4px;
+      color: $text-color-secondary;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.2s ease-in-out;
+      position: relative;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+
+      > .delete-article-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: $icon-color-dark;
+      }
+
+      > .article-categories {
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      > .article-title {
+        font-weight: 500;
+        font-size: 1.9rem;
+      }
+
+      > .article-body {
+        font-size: 1.4rem;
+        word-wrap: break-word;
+      }
+
+      > .article-tags {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .articles-list.grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 5px;
+
+    > .articles-list-item {
+      width: calc(25% - 10px);
+      max-height: 260px;
+      margin: 5px;
+      overflow: hidden;
+
+      @media screen and (max-width: $desktop) {
+        width: calc(33.33% - 10px);
+      }
+
+      @media screen and (max-width: $laptop) {
+        width: calc(50% - 10px);
+      }
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+      }
+
+      > .article-title {
+        margin-bottom: 10px;
+        font-size: 2rem;
+      }
+
+      > .article-body {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  > .action-bar {
+    .action {
+      display: flex;
+      border-right: 1px solid $border-color;
+      padding: 0 20px;
+      height: 100%;
+
+      > button {
+        color: lighten($text-color-secondary, 40%);
+
+        > svg-icon {
+          width: 26px;
+          height: 26px;
+        }
+
+        &:first-of-type {
+          margin-right: 5px;
+        }
+
+        &.active {
+          color: lighten($text-color-secondary, 20%);
+        }
+      }
+
+      select {
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+}

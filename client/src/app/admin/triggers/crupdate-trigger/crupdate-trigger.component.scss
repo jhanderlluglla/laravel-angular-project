@@ -1,0 +1,114 @@
+@import "../../../../assets/scss/variables";
+
+crupdate-trigger {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+
+  > form {
+    max-width: 100%;
+    width: 850px;
+    padding: 25px;
+  }
+
+  > .header {
+    padding: 15px;
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    > .title {
+      margin-left: 10px;
+      font-size: 1.6rem;
+    }
+
+    > .back-button {
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      padding: 3px 4px;
+      background-color: darken($admin-background-color, 3%);
+      color: $icon-color-dark;
+      vertical-align: middle;
+    }
+  }
+
+  .triggers-panel {
+    background-color: $table-background-color;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 25px;
+
+    > .panel-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $border-color;
+      font-weight: 500;
+
+      > .title {
+        flex: 1 1 auto;
+      }
+
+      .boxed-text {
+        border: 1px solid $border-color;
+        background-color: rgba($border-color, 0.04);
+        padding: 2px 5px;
+      }
+    }
+
+    .action-button {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+    }
+
+    .add-button {
+      background-color: $success-bg-color;
+      color: $success-text-color;
+    }
+
+    .remove-button {
+      background-color: $danger-bg-color;
+      color: $danger-text-color;
+    }
+    
+    .action {
+      > .action-inner {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+
+    .inputs {
+      flex: 1 1 auto;
+      display: flex;
+      flex-wrap: wrap;
+
+      > .input-container, > .inputs-wrapper {
+        max-width: 230px;
+        //width: 100%;
+        margin-right: 7px;
+        flex: 1 1 0;
+
+        &.full-width {
+          max-width: none;
+          width: calc(100% - 7px);
+          flex: 1 0 auto;
+
+          > .input-container {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+  
+  .error {
+    color: $danger-bg-color;
+  }
+}

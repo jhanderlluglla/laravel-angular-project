@@ -1,0 +1,28 @@
+<div class="condition" *ngFor="let selectedCondition of model; let index = index;">
+    <div *ngIf="selectedCondition.matchType === matchType">
+        <div class="condition-inner">
+            <div class="inputs">
+                <div class="input-container">
+                    <select name="condition-{{index}}" id="condition-{{index}}" [(ngModel)]="selectedCondition.condition_id" (ngModelChange)="onConditionSelect(selectedCondition)">
+                        <option value="0" disabled selected>-- Select a condition. --</option>
+                        <option [ngValue]="condition.id" *ngFor="let condition of allConditions">{{condition.name}}</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <select name="operator-{{index}}" id="operator-{{index}}" *ngIf="selectedCondition.condition_id > 0" [(ngModel)]="selectedCondition.operator_id">
+                        <option [ngValue]="operator.id" *ngFor="let operator of selectedCondition.conditionModel.operators">{{operator.display_name}}</option>
+                    </select>
+                </div>
+
+                <div class="condition-value input-container">
+                    <input type="text" name="value-{{index}}" id="value-{{index}}" *ngIf="selectedCondition.operator_id && selectedCondition.operatorModel.value_type === 'text'" [(ngModel)]="selectedCondition.value" required>
+                </div>
+            </div>
+            <button class="no-style remove-button action-button" type="button" tooltip="Remove condition" (click)="removeCondition(selectedCondition)">
+                <svg-icon name="remove"></svg-icon>
+            </button>
+        </div>
+        <div class="error" *ngIf="errors['conditions.'+index+'.value'] && selectedCondition.operator">{{errors['conditions.'+index+'.value']}}</div>
+    </div>
+</div>

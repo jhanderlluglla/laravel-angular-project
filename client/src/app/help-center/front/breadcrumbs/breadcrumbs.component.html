@@ -1,0 +1,6 @@
+<div class="container">
+    <a class="item" *ngFor="let item of items; let last = last; let first = first;" [routerLink]="item.link" [class.active]="last">
+        <svg-icon name="keyboard-arrow-right" class="separator size-18" *ngIf="!first"></svg-icon>
+        <span class="item-name">{{item.name}}</span>
+    </a>
+</div>

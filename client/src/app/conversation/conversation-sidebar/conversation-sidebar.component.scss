@@ -1,0 +1,106 @@
+@import "../../../assets/scss/variables";
+
+conversation-sidebar {
+  display: block;
+  flex: 0 0 $conversation-right-col-width;
+  width: $conversation-right-col-width;
+  background-color: $conversation-right-col-background-color;
+  border-left: 1px solid $border-color;
+
+  > .user-info {
+    margin: 15px 15px 10px;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 10px;
+
+    > .avatar {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+
+      > img {
+        max-width: 55px;
+        max-height: 65px;
+        margin: 0 auto;
+      }
+    }
+
+    > .user-details {
+      color: $text-color-secondary;
+
+      > .name {
+        display: block;
+        color: inherit;
+        font-size: 1.7rem;
+      }
+
+      > .email {
+        > svg-icon {
+          vertical-align: middle;
+          width: 18px;
+          height: 18px;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+
+  > .tickets-list-container {
+    padding: 0 15px;
+
+    > .title {
+      position: relative;
+      cursor: pointer;
+
+      > .toggle-button {
+        position: absolute;
+        right: 0;
+        top: -2px;
+        color: $text-color-secondary;
+
+        > svg-icon {
+          transition: all 0.3s ease;
+        }
+      }
+    }
+
+    > .tickets-list {
+      margin-top: 15px;
+      display: none;
+
+      > .ticket {
+        color: $text-color-secondary;
+        margin-bottom: 15px;
+        cursor: pointer;
+
+        > svg-icon {
+          color: $text-color-secondary;
+          width: 17px;
+          height: 17px;
+          vertical-align: middle;
+          margin-right: 3px;
+        }
+
+        &:hover {
+          text-decoration: underline;
+          color: $text-color;
+        }
+
+        &.open {
+          color: $text-color;
+        }
+      }
+    }
+
+    &.tickets-visible {
+      .tickets-list {
+        display: block;
+      }
+
+      .toggle-button > svg-icon {
+        display: inline-block;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

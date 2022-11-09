@@ -1,0 +1,32 @@
+@import "../../../assets/scss/variables";
+
+canned-replies {
+  .user-with-image {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      .text {
+        text-decoration: underline;
+      }
+    }
+
+    > img {
+      width: 35px;
+      height: 35px;
+      margin-right: 7px;
+    }
+
+    > .text {
+      color: $text-color;
+      font-weight: 500;
+    }
+  }
+
+  .reply-body {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 90%;
+    text-overflow: ellipsis;
+  }
+}

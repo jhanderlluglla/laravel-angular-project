@@ -1,0 +1,70 @@
+@import "../../../../assets/scss/variables";
+
+article-host {
+  display: block;
+  height: 100%;
+  background-color: $hc-background-color;
+
+  > .scroll-container {
+    height: 100%;
+  }
+
+  .content {
+    min-height: $hc-page-content-height;
+    max-width: $hc-page-max-width;
+    margin: 0 auto;
+    padding: 50px 20px 0;
+    display: flex;
+
+    > article {
+      flex: 1 1 auto;
+      margin-right: 50px;
+    }
+
+    > .related-content {
+      flex: 0 0 $hc-sidebar-width;
+      max-width: $hc-sidebar-width;
+
+      > .title {
+        font-size: 2.1rem;
+        font-weight: 300;
+        margin-bottom: 25px;
+      }
+
+      > .item {
+        display: block;
+        padding: 15px 0 15px 40px;
+        position: relative;
+        color: $hc-title-text-color;
+
+        &:hover {
+          color: $link-color;
+        }
+
+        > svg-icon {
+          position: absolute;
+          top: 6px;
+          left: 0;
+          width: 35px;
+          height: 35px;
+          color: $hc-article-icon-color;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $laptop) {
+    .content {
+      display: block;
+      padding-top: 20px;
+
+      .article-body {
+        min-width: initial;
+      }
+
+      .related-content {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}

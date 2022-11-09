@@ -1,0 +1,41 @@
+<dropdown class="dropdown" [autoPosition]="false">
+    <form class="input-container" (ngSubmit)="openSearchModal()">
+        <input class="search-input" type="text" placeholder="Search" [formControl]="searchQuery" #input trans-placeholder>
+        <svg-icon name="search" class="search-icon"></svg-icon>
+    </form>
+
+    <div class="dropdown-menu" customScrollbar #menu>
+        <div class="results-container" *ngIf="hasResults && loadedResultsAtLeastOnce">
+            <div class="header">
+                <div class="header-item tickets-item" [class.active]="activeCategory === 'tickets'" (click)="setActiveCategory('tickets'); $event.stopPropagation()" *ngIf="results.tickets.total" trans>Conversations</div>
+                <div class="header-item users-item" [class.active]="activeCategory === 'users'" (click)="setActiveCategory('users'); $event.stopPropagation()" *ngIf="results.users.total" trans>Users</div>
+            </div>
+
+            <div class="results-panel tickets-panel" *ngIf="activeCategory === 'tickets'">
+                <div class="result" *ngFor="let result of results.tickets.data" (click)="navigateToTicket(result.id)">
+                    <div class="title">{{result.subject}}</div>
+                    <div class="body">{{result.latest_reply && result.latest_reply.body}}</div>
+                    <div class="user" (click)="navigateToUser(result.user.id)" *ngIf="result.user">{{result.user.display_name}}</div>
+                </div>
+            </div>
+
+            <div class="results-panel users-panel" *ngIf="activeCategory === 'users'">
+                <div class="result media" *ngFor="let result of results.users.data" (click)="navigateToUser(result.id)">
+                    <img class="avatar" src="{{result.avatar}}" alt="customer avatar">
+                    <div class="text">
+                        <div class="title">{{result.email}}</div>
+                        <div class="body">{{result.display_name}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer" *ngIf="searchQuery.value" (click)="openSearchModal()">
+                <span trans>View All Results</span>
+            </div>
+        </div>
+
+        <div class="no-results" *ngIf="searchQuery.value && !isLoading && !hasResults && loadedResultsAtLeastOnce" trans>
+            No tickets or users matching your search query were found.
+        </div>
+    </div>
+</dropdown>

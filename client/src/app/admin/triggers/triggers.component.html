@@ -1,0 +1,56 @@
+<section class="flex-table-panel spacing">
+    <div class="flex-table-panel-header">
+        <div class="header-inner default" *ngIf="!selectedItems.length">
+            <div class="left">
+                <a class="button primary" routerLink="new" trans>Add</a>
+            </div>
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search triggers" trans-placeholder [formControl]="searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+        <div class="header-inner selected" *ngIf="selectedItems.length">
+            <div class="left">{{selectedItems.length}} <span trans>Triggers Selected</span></div>
+            <div class="right">
+                <button class="no-style" tooltip="Delete" (click)="confirmTriggersDeletion()"><svg-icon name="delete"></svg-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-table flex-table-bordered flex-table-compact flex-table-center-vertical">
+        <div class="flex-table-row flex-table-header">
+            <div class="flex-table-item width-1">
+                <input type="checkbox" class="pretty-checkbox" id="toggle-all-triggers-checkbox" (click)="toggleAllSelectedItems()">
+                <label for="toggle-all-triggers-checkbox"><span>.</span></label>
+            </div>
+            <div class="flex-table-item" trans>Name</div>
+            <div class="flex-table-item" trans>Description</div>
+            <div class="flex-table-item" trans>Last Updated</div>
+            <div class="flex-table-item" trans>Times Used</div>
+            <div class="flex-table-item width-1"></div>
+        </div>
+        <div class="flex-table-row" *ngFor="let trigger of items; let index = index;" [class.selected]="isItemSelected(trigger.id)">
+            <div class="flex-table-item width-1" (click)="$event.stopPropagation()">
+                <input type="checkbox" class="pretty-checkbox" id="trigger-checkbox-{{index}}" (change)="toggleSelectedItem(trigger.id)" [checked]="isItemSelected(trigger.id)">
+                <label for="trigger-checkbox-{{index}}"><span>.</span></label>
+            </div>
+            <div class="flex-table-item">{{trigger.name}}</div>
+            <div class="flex-table-item">{{trigger.description}}</div>
+            <div class="flex-table-item">{{trigger.updated_at}}</div>
+            <div class="flex-table-item">{{trigger.times_fired ? trigger.times_fired : 'None'}}</div>
+            <div class="flex-table-item width-1 center edit-icon" title="Edit Trigger">
+                <a [routerLink]="[trigger.id, 'edit']"><svg-icon name="edit"></svg-icon></a>
+            </div>
+        </div>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>Nothing To Display.</span>
+            <span secondary trans>Seems like no triggers have been created yet.</span>
+        </no-results-message>
+    </div>
+
+    <div class="flex-table-panel-footer" [class.hidden]="paginator.params.perPage >= paginator.params.total">
+        <pagination-controls [paginator]="paginator" itemsName="Triggers"></pagination-controls>
+    </div>
+</section>

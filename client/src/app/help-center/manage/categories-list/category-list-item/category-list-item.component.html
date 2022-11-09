@@ -1,0 +1,32 @@
+<div class="category-name-container">
+    <button class="no-style drag-handle"><svg-icon name="drag-handle"></svg-icon></button>
+    <span class="category-name" (click)="navigateToArticlesList(category)">{{category.name}}</span>
+</div>
+
+<div class="info">
+    <div class="articles-count">
+        <span class="no-articles" *ngIf="!category['articles_count']" trans>No Articles</span>
+        <span class="has-articles" *ngIf="category['articles_count']">
+            <span class="plural" *ngIf="category['articles_count'] > 1">{{ category['articles_count']}} <span trans>Articles</span></span>
+            <span class="singular" *ngIf="category['articles_count']== 1" trans>1 Article</span>
+        </span>
+    </div>
+</div>
+
+<div class="actions">
+    <button class="no-style update-category-button" (click)="openUpdateCategoryModal(category)" tooltip="Update Category">
+        <svg-icon name="settings" class="size-20"></svg-icon>
+    </button>
+
+    <button class="no-style new-child-category-button" (click)="openCreateChildCategoryModal()" *ngIf="!category.parent_id" tooltip="Create Child Category">
+        <svg-icon name="create-new-folder" class="size-20"></svg-icon>
+    </button>
+
+    <button class="no-style detach-category-button" (click)="maybeDetachCategory(category.id)" *ngIf="category.parent_id" tooltip="Detach Category">
+        <svg-icon name="delete" class="size-20"></svg-icon>
+    </button>
+
+    <button class="no-style delete-category-button" (click)="maybeDeleteCategory(category.id)" tooltip="Delete Category">
+        <svg-icon name="delete-forever" class="size-20"></svg-icon>
+    </button>
+</div>

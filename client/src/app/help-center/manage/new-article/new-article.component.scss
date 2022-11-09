@@ -1,0 +1,100 @@
+@import "../../../../assets/scss/variables";
+
+new-article {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: $new-article-page-background-color;
+
+  > .action-bar .action {
+    color: $icon-color-dark;
+  }
+
+  > .container {
+    display: flex;
+    height: calc(100% - #{$categories-page-action-bar-height});
+    width: 100%;
+    max-width: $new-article-max-page-width;
+    margin: 20px auto;
+
+    > .middle-column {
+      flex: 1 1 auto;
+      height: 100%;
+      margin-right: 20px;
+      box-shadow: $new-article-page-box-shadow;
+      background-color: $categories-page-item-bg-color;
+      border: 1px solid;
+      border-color: $new-article-page-border-color;
+      border-radius: $new-article-page-border-radius;
+      overflow: hidden;
+
+      .title {
+        display: flex;
+
+        > .article-title-input, > .article-status-input {
+          border: none;
+          height: 50px;
+        }
+
+        > .article-title-input {
+          flex: 1 1 auto;
+          font-size: 2rem;
+          padding: 10px 25px;
+        }
+
+        > .article-status-input {
+          flex: 0 0 130px;
+          border-left: 1px solid $border-color;
+        }
+      }
+
+      .body {
+        height: calc(100% - 50px);
+      }
+
+      text-editor {
+        max-height: none;
+        margin-bottom: 10px;
+        border-left: none;
+        border-right: none;
+
+        .editor-header, .editor-footer {
+          background-color: #fff;
+        }
+      }
+    }
+
+    > .right-column {
+      width: $new-article-right-col-width;
+      flex: 0 0 $new-article-right-col-width;
+      height: 100%;
+      overflow: auto;
+      padding: 0 2px;
+
+      .panel {
+        margin-bottom: 15px;
+      }
+
+      .new-category-button {
+        margin: 20px 0 10px;
+      }
+    }
+
+    > .preview-article-button {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      box-shadow: $box-shadow-3;
+      background-color: $accent-color;
+      color: $accent-text-color;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      border: none;
+    }
+  }
+}

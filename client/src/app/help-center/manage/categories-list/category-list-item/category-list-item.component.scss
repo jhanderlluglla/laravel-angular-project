@@ -1,0 +1,50 @@
+@import "../../../../../assets/scss/variables";
+
+category-list-item {
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+
+  > .category-name-container {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > .drag-handle, > .category-name {
+      vertical-align: middle;
+    }
+
+    > .category-name:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    > .drag-handle {
+      color: $icon-color-dark;
+      margin-right: 8px;
+      cursor: move;
+    }
+  }
+
+  > .info {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    color: $text-color-secondary;
+  }
+
+  > .actions {
+    flex: 0 0 150px;
+    text-align: right;
+
+    > button {
+      color: $icon-color-dark;
+      vertical-align: middle;
+      border: 1px solid $border-color;
+      width: 35px;
+      height: 35px;
+      margin-right: 5px;
+    }
+  }
+}

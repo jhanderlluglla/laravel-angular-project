@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/variables";
+
+percentage-change {
+    display: block;
+    color: $text-color-secondary;
+    font-weight: 500;
+
+    .positive {
+        color: $success-bg-color;
+    }
+
+    .negative {
+        color: $danger-bg-color;
+    }
+}

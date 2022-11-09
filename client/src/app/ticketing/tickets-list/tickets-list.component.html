@@ -1,0 +1,89 @@
+<div class="scroll-container" customScrollbar>
+    <section class="categories-info" *ngIf="categories_info.length">
+        <div *ngFor="let cat of categories_info" class="cat-count">
+            <label class="category">{{cat.category }}</label>
+            <div *ngFor="let status of cat.status">
+                <span class="{{status.name}} name">{{status.name}} :</span>
+                <span class="{{status.name}} count">{{status.count}}</span>
+            </div>
+        </div>
+    </section>
+    <section class="tickets flex-table hover">
+
+        <div class="flex-table-row flex-table-header ticket">
+            <div class="flex-table-item customer center-middle">
+                <div class="checkbox">
+                    <input type="checkbox" class="pretty-checkbox" id="toggle-all-tickets-checkbox" (click)="toggleAllSelectedItems()" [checked]="allItemsSelected">
+                    <label for="toggle-all-tickets-checkbox"><span>.</span></label>
+                </div>
+                <div class="customer-name" trans>Customer</div>
+            </div>
+            <div class="flex-table-item avatar"></div>
+            <div class="flex-table-item flex-table-main-column center-middle" trans>Ticket Summary</div>
+            <div class="flex-table-item center replies-status"></div>
+            <div class="flex-table-item center replies-count" trans>Status</div>
+            <div class="flex-table-item center ticket-number" trans>Number</div>
+            <div class="flex-table-item center last-updated" trans>Last Updated</div>
+            <div class="flex-table-item center last-worker" trans>Assigned</div>
+            <div class="flex-table-item center priority" trans>Priority</div>
+            <div class="flex-table-item center assigned-group" trans>Group</div>
+        </div>
+
+        <div class="ticket flex-table-row ticket-row animated"
+            *ngFor="let ticket of items"
+            [class.bounce]="ticket['animated']"
+            [class.selected]="isItemSelected(ticket.id)"
+            (click)="openConversation(ticket.id)"
+            [highlightOpenTicket]="ticket.tags"
+        >
+            <div class="customer flex-table-item center-middle">
+                <div class="checkbox" (click)="$event.stopPropagation()">
+                    <input type="checkbox" class="pretty-checkbox" id="ticket-checkbox-{{prefix+ticket.id}}" (change)="toggleSelectedItem(ticket.id)" [checked]="isItemSelected(ticket.id)">
+                    <label for="ticket-checkbox-{{prefix+ticket.id}}"><span>.</span></label>
+                </div>
+                <div class="customer-name">{{ticket.user && ticket.user.display_name}}</div>
+            </div>
+            <div class="flex-table-item avatar"><img src="{{ticket.user && ticket.user.avatar}}" alt="customer avatar"></div>
+            <div class="ticket-summary flex-table-item flex-direction-column flex-table-main-column">
+                <div class="title">
+                    <div class="tags">
+                        <ng-template ngFor let-tag [ngForOf]="ticket.tags">
+                            <div class="tag-label" *ngIf="tag.type !== 'status'">{{ tag.display_name }}</div>
+                        </ng-template>
+                    </div>
+                    <div class="title-text ticket-subject">{{ticket.subject}}</div>
+                </div>
+                <div class="ellipses ticket-body">{{getTicketBody(ticket)}}</div>
+            </div>
+            <div class="replies-count flex-table-item center"><span title="Replies count">{{ticket['replies_count'] || 1}}</span></div>
+            <div class="ticket-status flex-table-item center {{ticket.status}}">{{ticket.status}}</div>
+            <div class="ticket-number flex-table-item center">AP{{ticket.id}}</div>
+            <div class="last-updated flex-table-item center">{{ticket.updated_at_formatted}}</div>
+            <div class="last-worker flex-table-item center">
+                {{ticket.assigned_user && ticket.assigned_user.first_name && ticket.assigned_user.last_name && ticket.assigned_user.first_name + ' ' + ticket.assigned_user.last_name}}
+            </div>
+            <div class="priority flex-table-item center">
+                {{ (ticket.priority && ticket.priority.name ) || 'Low' }}
+            </div>
+            <div class="assigned-group flex-table-item center">
+                <span *ngFor="let item of ticket.assigned_group, let i=index" [ngStyle]="{color: item.color ? item.color : 'rgba(0, 0, 0, 0.87)' }">
+                  {{ item.name }}{{i === ticket.assigned_group.length - 1 ? '' : ','}}
+                </span>
+            </div>
+
+        </div>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>Nothing To Display.</span>
+            <span secondary trans>Seems like there are no tickets in this category.</span>
+        </no-results-message>
+
+        <ng-content></ng-content>
+    </section>
+
+    <ticket-floating-toolbar [class.hidden]="!selectedItems.length" [selectedTickets]="selectedItems" (onTicketsUpdated)="refreshTicketsList()"></ticket-floating-toolbar>
+
+    <pagination-controls [paginator]="paginator" itemsName="Tickets"></pagination-controls>
+</div>
+
+<loading-indicator class="overlay" [isVisible]="paginator.isLoading"></loading-indicator>

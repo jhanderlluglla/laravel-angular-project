@@ -1,0 +1,69 @@
+<div class="header">
+    <div class="title">Ticketing</div>
+    <div class="subtitle" trans>Toggle email functionality for tickets, change mail handler, secret key and more.</div>
+</div>
+
+<form class="body many-inputs" (submit)="saveSettings()">
+
+    <div class="setting-checkbox">
+        <input type="checkbox" class="pretty-checkbox" name="replies.send_email" id="replies.send_email" [(ngModel)]="state.client['replies.send_email']">
+        <label for="replies.send_email" trans>Send replies via email</label>
+        <p trans>Send agent replies to ticket creator via email.</p>
+    </div>
+
+    <div class="setting-checkbox">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.create_from_emails" id="tickets.create_from_emails" [(ngModel)]="state.client['tickets.create_from_emails']">
+        <label for="tickets.create_from_emails" trans>New ticket from emails</label>
+        <p trans>Create new ticket from incoming emails that can't be matched to existing tickets.</p>
+    </div>
+
+
+    <div class="setting-checkbox">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.assigned_notification_email" id="tickets.assigned_notification_email" [(ngModel)]="state.client['tickets.assigned_notification_email']">
+        <label for="tickets.assigned_notification_email" trans>New ticket Assigned Email</label>
+        <p trans>Send Email to User when ticket is assigned to user</p>
+    </div>
+
+    <div class="setting-checkbox">
+        <input type="checkbox" class="pretty-checkbox" name="replies.create_from_emails" id="replies.create_from_emails" [(ngModel)]="state.client['replies.create_from_emails']">
+        <label for="replies.create_from_emails" trans>Replies from emails</label>
+        <p trans>Create a reply to existing ticket from incoming emails, if email is in reply to that ticket.</p>
+    </div>
+
+    <div class="widget widget-info">
+        <div class="title" trans>Information</div>
+        <p trans>Having all three of the above options enabled will essentially turn the site into a shared inbox. All incoming and outgoing emails will be converted into tickets and replies. </p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="!state.client['tickets.create_from_emails']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_rejected_notification" id="tickets.send_ticket_rejected_notification" [(ngModel)]="state.client['tickets.send_ticket_rejected_notification']">
+        <label for="tickets.send_ticket_rejected_notification" trans>Ticket Rejected Notification</label>
+        <p trans>Send a notification to user, if their ticket has not been created, because ticket creation via email is disabled.</p>
+    </div>
+
+    <div class="setting-checkbox">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_created_notification" id="tickets.send_ticket_created_notification" [(ngModel)]="state.client['tickets.send_ticket_created_notification']">
+        <label for="tickets.send_ticket_created_notification" trans>Ticket Received Notification</label>
+        <p trans>Send a notification to user via email informing them that their ticket has been received.</p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_in_office_hours" id="tickets.send_ticket_in_office_hours" [(ngModel)]="state.client['tickets.send_ticket_in_office_hours']">
+        <label for="tickets.send_ticket_in_office_hours" trans>During Office Hours</label>
+        <p trans>Send a notification to user in office hour.</p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_after_office_hours" id="tickets.send_ticket_after_office_hours" [(ngModel)]="state.client['tickets.send_ticket_after_office_hours']">
+        <label for="tickets.send_ticket_after_office_hours" trans>After Office Hours</label>
+        <p trans>Send a notification to user after office hours.</p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_in_weekends" id="tickets.send_ticket_in_weekends" [(ngModel)]="state.client['tickets.send_ticket_in_weekends']">
+        <label for="tickets.send_ticket_in_weekends" trans>Weekend and Public Days</label>
+        <p trans>Send a notification in weekend and public days.</p>
+    </div>
+
+    <button class="button primary update-button" type="submit" trans>Update</button>
+</form>

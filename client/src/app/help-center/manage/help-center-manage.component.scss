@@ -1,0 +1,101 @@
+@import "../../../assets/scss/variables";
+
+help-center-manage {
+  display: block;
+  height: 100%;
+
+  > .navbar {
+    box-shadow: none;
+
+    .logo {
+      margin-right: 50px;
+    }
+  }
+
+  > .body {
+    height: calc(100% - #{$navbar-height});
+  }
+
+  .action-bar {
+    background-color: $categories-page-action-bar-bg-color;
+    height: $categories-page-action-bar-height;
+    box-shadow: $box-shadow-2;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+
+    > .nav {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+
+      > .nav-item {
+        display: inline-block;
+        color: $text-color-secondary;
+        font-size: 1.6rem;
+        margin-left: 25px;
+        border-bottom: 2px solid transparent;
+        height: 100%;
+        line-height: $categories-page-action-bar-height;
+
+        &.router-link-active {
+          border-color: $accent-color;
+        }
+      }
+    }
+
+    > .actions {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 30px;
+
+      > .input-container {
+        flex: 0 0 300px;
+        height: 100%;
+        position: relative;
+
+        > svg-icon {
+          position: absolute;
+          top: 16px;
+          left: 10px;
+          color: lighten($icon-color-dark, 15%);
+        }
+
+        > input {
+          font-size: 1.7rem;
+          padding-left: 40px;
+          border-top: none;
+          border-bottom: none;
+          height: 100%;
+        }
+      }
+
+      > .action {
+        width: auto;
+      }
+
+      > .new-item-button {
+        background-color: $accent-color;
+        color: $accent-text-color;
+        border-radius: 50px;
+        padding: 1px 20px;
+        border: none;
+        line-height: 30px;
+        vertical-align: middle;
+        white-space: nowrap;
+        margin-left: 30px;
+
+        > svg-icon {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &:hover svg-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

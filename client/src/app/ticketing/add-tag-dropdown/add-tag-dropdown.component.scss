@@ -1,0 +1,22 @@
+@import "../../../assets/scss/variables";
+
+add-tag-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-menu {
+    padding: 0;
+
+    > .input-container {
+      padding: 10px;
+
+      > input {
+        padding: 6px;
+      }
+    }
+
+    .dropdown-item:first-of-type {
+      border-top: 1px solid $border-color;
+    }
+  }
+}

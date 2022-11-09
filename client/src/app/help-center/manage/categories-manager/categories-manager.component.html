@@ -1,0 +1,42 @@
+<div class="panel" customScrollbar="lite">
+    <div class="panel-header">
+        <span trans>Categories</span>
+        <button class="no-style action-button clear-all-button" (click)="deselectAll()" tooltip="Clear All">
+            <svg-icon name="clear-all"></svg-icon>
+        </button>
+    </div>
+    <div class="panel-body">
+        <div class="input-container">
+            <input type="text" id="categories-manager-search" [formControl]="searchQuery" placeholder="Search..." trans-placeholder>
+            <svg-icon name="search"></svg-icon>
+        </div>
+
+        <section class="categories" customScrollbar="lite">
+            <ng-container *ngFor="let category of categories; let parentIndex = index;">
+                <div class="category parent-category">
+                    <input
+                            type="checkbox"
+                            class="pretty-checkbox"
+                            id="{{parentIndex}}"
+                            [checked]="categoryIsSelected(category.id) || childIsSelected(category)"
+                            (change)="toggle(category);"
+                    >
+                    <label for="{{parentIndex}}">{{category.name}}</label>
+                </div>
+                <div class="category child-category" *ngFor="let childCategory of category.children; let childIndex = index;">
+                    <input
+                            type="checkbox"
+                            class="pretty-checkbox"
+                            id="{{parentIndex+''+childIndex}}"
+                            [checked]="categoryIsSelected(childCategory.id)"
+                            (change)="toggle(childCategory, category.id);"
+                    >
+                    <label for="{{parentIndex+''+childIndex}}">{{childCategory.name}}</label>
+                </div>
+            </ng-container>
+            <div class="no-results" *ngIf="!categories.length && searchQuery.value" trans>No Results Found.</div>
+        </section>
+
+        <ng-content></ng-content>
+    </div>
+</div>

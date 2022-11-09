@@ -1,0 +1,24 @@
+<div class="backdrop"></div>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" trans>Add Note</h2>
+        <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <div class="input-container">
+        <text-editor inlineUploadType="ticket" class="text-editor" [minHeight]="300" (onFileUpload)="uploadFiles($event)" #textEditor></text-editor>
+
+        <upload-progress-bar></upload-progress-bar>
+
+        <div class="error" *ngIf="errors.body">{{errors.body}}</div>
+        <div class="error" *ngIf="errors.attachments">{{errors.attachments}}</div>
+
+        <attachments-list [attachments]="attachments" *ngIf="attachments.length" (onRemoveAttachment)="removeAttachment($event)"></attachments-list>
+    </div>
+
+    <div class="buttons right">
+        <button (click)="close()" type="button" class="button cancel" trans>Cancel</button>
+        <button type="submit" class="button primary submit-button" (click)="confirm()" trans>Add Note</button>
+    </div>
+</div>

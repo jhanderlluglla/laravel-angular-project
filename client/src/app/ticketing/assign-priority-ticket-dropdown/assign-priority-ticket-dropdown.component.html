@@ -1,0 +1,7 @@
+<dropdown (onFirstOpen)="fetchPriorities()">
+    <ng-content></ng-content>
+
+    <div class="dropdown-menu" #menu customScrollbar>
+        <div class="dropdown-item agent-item" #menuItem *ngFor="let priority of priorities" (click)="assignTicketsTo(priority.id)" [class.active]="ticket && ticket.priority_id == priority.id">{{priority.name}}</div>
+    </div>
+</dropdown>

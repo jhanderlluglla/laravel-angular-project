@@ -1,0 +1,100 @@
+@import "../../../../assets/scss/variables";
+
+hc-search-page {
+  display: block;
+  height: 100%;
+
+  > .scroll-container {
+    height: 100%;
+  }
+
+  .header {
+    margin-right: 45px;
+
+    > .back  {
+      vertical-align: middle;
+      margin-right: 20px;
+      color: $accent-color;
+    }
+
+    > .info {
+      font-size: 1.5rem;
+      color: $text-color-secondary;
+    }
+
+    @media only screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .content {
+    margin: 40px auto 60px;
+    max-width: $hc-page-max-width;
+    min-height: $hc-page-content-height;
+    padding: 0 20px;
+
+    > .article-container {
+      margin-bottom: 25px;
+      display: flex;
+      border-bottom: 1px solid $border-color-light;
+      padding-bottom: 25px;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      > .icon {
+        flex: 0 0 47px;
+        width: 47px;
+        color: rgba(0,0,0,0.4);
+        padding-top: 3px;
+
+        > svg-icon {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      > .article {
+        flex: 1 1 auto;
+
+        > .title {
+          display: block;
+          font-weight: 400;
+          font-size: 2.2rem;
+          color: $hc-text-color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        > .body {
+          font-size: 1.6rem;
+          color: $text-color-secondary;
+        }
+
+        > .path {
+          margin-top: 6px;
+          color: $text-color-secondary;
+          font-style: italic;
+
+          > svg-icon {
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+          }
+
+          > a {
+            color: inherit;
+            font-style: inherit;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

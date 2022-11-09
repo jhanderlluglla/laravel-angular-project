@@ -1,0 +1,98 @@
+@import "../../assets/scss/variables";
+
+.input-container {
+  display: block;
+  width: 100%;
+
+  > .error {
+    margin-top: 6px;
+    color: $danger-bg-color;
+  }
+
+  > p {
+    color: $text-color-secondary;
+    font-size: 1.3rem;
+  }
+
+  > label {
+    display: block;
+    padding-bottom: 5px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    height: $input-height;
+    color: $text-color;
+    border: 1px solid $border-color;
+    padding: 0 10px;
+    line-height: normal;
+    outline: none;
+    font-size: 1.4rem;
+
+    &:active, &:focus {
+      border-color: $link-color;
+    }
+
+    &:disabled {
+      background-color: #eee;
+      color: #999;
+    }
+  }
+
+  > textarea {
+    height: auto;
+    padding: 10px;
+  }
+
+  &.input-inline {
+    display: inline-block;
+    width: auto;
+
+    > input, > select {
+      width: auto;
+      min-width: 135px;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 7px;
+    }
+
+    > label {
+      margin-right: 5px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0;
+    }
+  }
+
+  &.with-addon {
+    display: flex;
+    flex-wrap: wrap;
+
+    > input {
+      width: calc(100% - 50px);
+      flex: 1 1 auto;
+      border-right: none;
+    }
+
+    > .input-addon {
+      width: 50px;
+      min-width: initial;
+      background-color: $accent-color;
+      color: $accent-text-color;
+      font-size: 1.8rem;
+
+      &.lesser {
+        background-color: $gray-bg-color;
+        color: $text-color-secondary;
+        border: 1px solid $border-color;
+      }
+    }
+  }
+}
+
+.many-inputs {
+  > .input-container {
+    margin-bottom: 20px;
+  }
+}

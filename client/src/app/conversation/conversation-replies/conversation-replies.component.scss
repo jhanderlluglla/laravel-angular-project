@@ -1,0 +1,132 @@
+@import "../../../assets/scss/variables";
+
+conversation-replies {
+  display: block;
+  width: 100%;
+
+  .reply {
+    display: flex;
+    padding: 25px;
+    border-top: 1px solid $border-color;
+
+    &.notes {
+      background-color: $note-background-color;
+      color: $note-text-color;
+      border-left: 3px solid $note-border-color;
+    }
+
+    &.drafts {
+      border-left: 3px solid $accent-color;
+
+      .customer .text-gray {
+        color: $accent-color;
+      }
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid $border-color;
+    }
+
+    .user-avatar {
+      flex: 0 0 50px;
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+      object-fit: cover;
+    }
+
+    .reply-body {
+      flex: 1 1 auto;
+      max-width: calc(100% - 70px);
+    }
+
+    attachments-list {
+      border-top: 1px dotted $border-color;
+      margin: 20px 0 0 0;
+      padding-top: 20px;
+      display: inline-flex;
+
+      > .attachments-list-item:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .message-header {
+    font-size: 1.65rem;
+    margin-bottom: 15px;
+    display: flex;
+
+    .customer {
+      flex: 1 1 auto;
+
+      .draft-actions {
+        margin-left: 10px;
+        vertical-align: text-bottom;
+
+        > button {
+          border: 1px solid $border-color;
+          padding: 5px 8px;
+          font-size: 1.2rem;
+          border-radius: 3px;
+
+          &:hover {
+            background-color: darken(#fff, 3%);
+          }
+        }
+      }
+    }
+
+    .meta {
+      flex: 0 0 100px;
+      color: $text-color-secondary;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-right: 5px;
+      text-align: right;
+      white-space: nowrap;
+      line-height: 23px;
+
+      > .reply-actions {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+
+        > svg-icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          color: $accent-color
+        }
+      }
+    }
+
+    .customer-name {
+      text-transform: capitalize;
+      font-weight: 500;
+      color: lighten($text-color, 15%);
+    }
+
+    .text-gray {
+      color: $text-color-secondary;
+    }
+  }
+
+  .message-body {
+    max-width: 90%;
+    word-wrap: break-word;
+    overflow-x: hidden;
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,295 @@
+:root {
+  //Brand Colors
+  --body-bg-color: #fff;
+  --gray-bg-color: #FAFAFA;
+  --primary-color: #2e73de;
+  --primary-color-light: #4482e1;
+  --primary-color-dark: #2166d1;
+  --accent-color: #34AD00;
+  --hover-color: #ebf2fc;
+
+  //Contextual Colors
+  --success-bg-color: #4CAF50;
+  --success-text-color: #fff;
+  --danger-bg-color: #F44336;
+  --danger-text-color: #fff;
+  --accent-text-color: #fff;
+
+  //Border Colors
+  --border-color: #E0E0E0;
+  --border-color-light: #eff1f2;
+
+  //Icons
+  --icon-color-dark: rgba(0, 0, 0, 0.5);
+  --icon-color-light: rgba(0, 0, 0, 0.3);
+  --default-svg-icon-size: 24px;
+  --input-height: 38px;
+
+  //Text Color and Style
+  --font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  --text-color: rgba(0, 0, 0, .87);
+  --text-color-secondary: rgba(0, 0, 0, .54);
+  --text-color-disabled: rgba(0, 0, 0, .38);
+  --text-color-darker: #898B8C;
+  --link-color: #1E88E5;
+
+  //Box Shadows
+  --box-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --box-shadow-2: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+  --box-shadow-3: 0 1px 8px 0 rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .12);
+
+  //Conversation Page
+  --conversation-text-color-lighter: rgba(38, 38, 38, .87);
+  --conversation-right-col-width: 240px;
+  --conversation-right-col-background-color: #FAFAFA;
+  --note-background-color: #fffcea;
+  --note-text-color: #836f60;
+  --note-border-color: #c8bcb4;
+  --ticket-header-height: 60px;
+
+  //Buttons
+  --button-color: #fff;
+  --button-text-color: var(--text-color);
+  --button-border-color: transparent;
+  --primary-button-color: var(--accent-color);
+  --primary-button-hover-bg-color: #2c9400;
+  --primary-button-text-color: #fff;
+  --danger-button-color: #ea6153;
+  --danger-button-hover-bg-color: #e74c3c;
+  --danger-button-text-color: var(--primary-button-text-color);
+  --danger-button-border-color: #ea6153;
+  --flat-button-background-color: rgba(158, 158, 158, 0.2);
+  --flat-button-text-color: #555;
+
+  //Panels
+  --panel-background-color: #fff;
+  --panel-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+  --panel-border-color: #e5e5e5;
+  --panel-header-color: whitesmoke;
+  --panel-footer-color: var(--gray-bg-color);
+  --panel-header-text-color: var(--text-color);
+
+  //Agent Dashboard (Tickets List)
+  --left-col-width: 225px;
+  --left-col-bg-color: #FAFAFA;
+  --left-col-text-color: #858b94;
+  --left-col-title-color: rgba(0, 0, 0, 0.54);
+  --left-col-hover-color: #eff1f2;
+  --left-col-title-font-size: 1.4rem;
+  --left-col-link-font-size: 1.4rem;
+  --left-col-border-color: transparent;
+  --left-col-item-padding: 10px 0 10px 41px;
+  --left-col-compact-item-padding: 8px 0 8px 15px;
+  --left-col-title-padding: 20px 15px 15px 15px;
+  --left-col-compact-title-padding: 12px 5px 12px 12px;
+  --pagination-controls-height: 40px;
+  --pagination-controls-bg-color: transparent;
+  --pagination-controls-text-color: var(--text-color-secondary);
+
+  //Navigation Bar
+  --navbar-height: 64px;
+  --navbar-boxshadow: 0 1px 8px rgba(0, 0, 0, .3);
+  --navbar-background-color: var(--primary-color-dark);
+  --navbar-text-color: rgba(255, 255, 255, .65);
+  --navbar-searchbar-background-color: var(--primary-color);
+
+  //Tags and Labels
+  --tag-bg-color: #AAAEB7;
+  --tag-text-color: #fff;
+  --tag-hover-bg-color: #9ca1ab;
+
+  //File Previews
+  --file-preview-modal-background-color: #FBFBFB;
+  --file-preview-modal-header-height: 70px;
+  --file-preview-modal-header-bg-color: var(--primary-color) + 'red';
+  --file-preview-modal-header-text-color: var(--primary-button-text-color);
+  --file-preview-modal-accent-color: rgba(0, 0, 0, 0.4);
+  --file-preview-modal-accent-text-color: var(--accent-text-color);
+
+  //Tooltips and Toasts
+  --toast-default-background-color: #323232;
+  --toast-default-text-color: #fff;
+  --toast-error-background-color: var(--danger-bg-color);
+  --toast-error-text-color: var(--danger-text-color);
+  --toast-success-background-color: var(--success-bg-color);
+  --toast-success-text-color: var(--success-text-color);
+  --toast-border-radius: 2px;
+  --toast-height: 20px;
+  --toast-padding: 14px 20px;
+  --toast-min-width: 288px;
+  --toast-max-width: 568px;
+  --toast-font-size: 1.4rem;
+  --toast-box-shadow: var(--box-shadow-3);
+
+  //Loading Indicator
+  --loading-indicator-color: var(--accent-color);
+  --loading-indicator-width: 80px;
+  --loading-indicator-height: 70px;
+
+  //Help Center (Admin Side)
+  --hc-manage-bg-color: #EEEEEE;
+
+  //New Article Page
+  --new-article-right-col-width: 302px;
+  --new-article-max-page-width: 1300px;
+  --new-article-page-background-color: var(--hc-manage-bg-color);
+  --new-article-page-box-shadow: var(--box-shadow-1);
+  --new-article-page-border-color: #d3d3d3 #d3d3d3 #c4c4c4 #d3d3d3;
+  --new-article-page-border-radius: 4px;
+
+  //Categories Page (Admin Side)
+  --categories-page-max-width: 1300px;
+  --categories-page-item-bg-color: #fff;
+  --categories-page-item-padding: 15px;
+  --categories-page-item-border: none;
+  --categories-page-item-box-shadow: var(--box-shadow-1);
+  --categories-page-action-bar-bg-color: #fff;
+  --categories-page-action-bar-height: 55px;
+
+  //Help center (User Side)
+  --hc-header-height: 404px;
+  --hc-background-color: #fff;
+  --hc-header-padding: 34px 50px 65px;
+  --hc-front-header-color: #242C31;
+  --hc-front-header-text-color: #fff;
+  --hc-page-max-width: 1170px;
+  --hc-title-text-color: #43484d;
+  --hc-text-color: #5e6977;
+  --hc-search-bar-height: 60px;
+  --hc-article-icon-color: rgb(181, 191, 199);
+  --hc-breadcrumb-background-color: #F9F9F9;
+  --hc-sidebar-width: 375px;
+  --hc-compact-header-navbar-height: 65px;
+  --hc-compact-header-sub-header-height: 108px;
+  --hc-footer-height: 70px;
+  --hc-footer-background-color: #fcfcfc;
+  --hc-page-content-height: calc(100% - 244px);
+  --login-page-border-color: #ededed;
+  --login-page-panel-background-color: #fff;
+
+  //Admin Area
+  --admin-background-color: var(--left-col-bg-color);
+  --admin-left-col-background-color: #263238;
+  --admin-left-col-text-color: #cacdcd;
+  --admin-navbar-text-color: #777;
+  --admin-navbar-background-color: #FAFAFA;
+  --admin-navbar-height: 70px;
+  --admin-table-background-color: #fff;
+
+  //Tables
+  --table-panel-active-header-background-color: var(--hc-breadcrumb-background-color);
+  --table-panel-active-header-text-color: var(--text-color-secondary);
+  --table-panel-active-header-font-size: 1.5rem;
+  --table-panel-header-height: 38px;
+  --table-panel-header-padding: 15px;
+  --table-background-color: #fff;
+  --table-row-hover-background-color: var(--hover-color);
+  --table-hover-background-color: var(--hover-color);
+  --table-row-height: 70px;
+  --table-header-height: var(--table-row-height);
+  --table-text-less-emphasis-color: #999;
+  --table-selected-row-bg-color: var(--table-row-hover-background-color);
+  --table-stripped-row-bg-color: #f2f2f2;
+
+  //Floating Tickets List Toolbar
+  --floating-toolbar-width: 235px;
+  --floating-toolbar-wide-width: 320px;
+  --floating-toolbar-bg-color: #fff;
+  --floating-toolbar-item-bg-color: inherit;
+  --floating-toolbar-item-height: 45px;
+  --floating-toolbar-item-width: 45px;
+  --floating-toolbar-text-color: var(--text-color);
+
+  //Dropdowns
+  --dropdown-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+  --dropdown-border-radius: 0;
+  --dropdown-with-search-width: 300px;
+  --dropdown-max-height: 260px;
+  --dropdown-item-hover-bg-color: var(--table-hover-background-color);
+
+  //Ticket Search Dropdown
+  --ticket-search-dropdown-header-bg: #FAFAFA;
+  --ticket-search-dropdown-footer-bg: var(--ticket-search-dropdown-header-bg);
+  --ticket-search-dropdown-font-size: 1.3rem;
+  --ticket-search-dropdown-top: 54px;
+
+  //Reports
+  --chart-height: 350px;
+  --chart-header-height: 30px;
+  --chart-panel-height: var(--chart-height) + var(--chart-header-height);
+  --reports-panel-background-color: #fcfcfc;
+
+  //Social services colors
+  --envato-color: #82B541;
+  --facebook-color: #3b5998;
+  --twitter-color: #1da1f2;
+  --google-color: #d34836;
+
+  //Modals
+  --modal-backdrop-color: rgba(33, 33, 33, 0.48);
+  --modal-content-background-color: #fff;
+  --modal-content-padding: 24px;
+  --modal-content-width: 530px;
+  --modal-content-max-width: 90%;
+  --modal-content-max-height: 95%;
+  --modal-content-box-shadow: var(--box-shadow-3);
+  --modal-content-text-color: var(--text-color);
+  --modal-header-text-color: var(--text-color);
+  --modal-header-font-size: 2rem;
+  --modal-header-font-weight: 500;
+  --modal-header-margin: 0 0 35px;
+  --modal-input-hint-text-color: var(--text-color-secondary);
+  --modal-close-button-size: 35px;
+  --modal-close-button-color: var(--icon-color-dark);
+  --modal-error-text-color: var(--danger-bg-color);
+  --form-modal-background-color: rgba(250, 250, 250, 0.95);
+  --form-modal-cancel-button-bg-color: #fff;
+  --form-modal-content-width: 750px;
+  --form-modal-compact-content-width: 550px;
+  --form-modal-error-text-color: var(--danger-bg-color);
+
+  //Article Page
+  --article-font-size: 1.8rem;
+  --article-font-weight: 300;
+  --article-line-height: 26px;
+  --article-divider-color: #eaeaea;
+  --article-image-border: 1px solid var(--border-color-light);
+  --article-image-padding: 0;
+  --article-image-margin: 15px auto;
+  --article-image-border-radius: 4px;
+  --article-title-font-size: 4.2rem;
+  --article-title-font-weight: 300;
+  --article-h2-font-size: 2.8rem;
+  --article-h2-line-height: normal;
+  --article-h2-margin: 0;
+  --article-h2-font-weight: 300;
+  --article-h3-font-size: 2.3rem;
+  --article-h3-line-height: normal;
+  --article-h3-margin: 0 0 5px;
+  --article-h3-font-weight: 300;
+
+  //Ticket Attachments
+  --attachment-width: 180px;
+  --attachment-height: 33px;
+  --attachment-margin: 0 10px 10px 0;
+  --attachment-background-color: #f5f5f5;
+  --attachment-text-color: #777;
+  --attachment-preview-big-icon-color: #E5E5E5;
+  --text-file-color: #4285F4;
+  --image-file-color: #DB4437;
+  --audio-file-color: #DB4437;
+  --video-file-color: #DB4437;
+  --document-file-color: #0F9D58;
+
+  //Text Editor
+  --text-editor-header-background-color: var(--gray-bg-color);
+  --text-editor-header-height: 37px;
+  --text-editor-button-color: #788593;
+  --text-editor-min-height: 218px;
+  --text-editor-max-height: 600px;
+  --text-editor-submit-button-bg-color: #6b7886;
+  --text-editor-submit-button-color: var(--accent-text-color);
+  --text-editor-button-icon-size: 22px;
+  --text-editor-button-size: var(--text-editor-header-height) - 1;
+  --text-editor-button-padding: var(--text-editor-button-size) - var(--text-editor-button-icon-size) / 2;
+}

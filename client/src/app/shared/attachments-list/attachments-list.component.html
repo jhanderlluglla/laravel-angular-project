@@ -1,0 +1,8 @@
+<div class="attachments-list-item" *ngFor="let attachment of attachments" (click)="showPreviewModal({files: attachments, current: attachment})">
+    <div class="attachment-info type-icon"><svg-icon [name]=mime.getIconName(attachment.mime)></svg-icon></div>
+    <div class="attachment-info name">{{ attachment.name }}</div>
+    <div class="attachment-info size">{{ attachment.formatted_size }}</div>
+    <button class="remove-attachment icon-button no-style" tooltip="Remove attachment" *ngIf="closeButtonIsVisible" (click)="removeAttachment(attachment.id); $event.stopPropagation()">
+        <svg-icon name="close"></svg-icon>
+    </button>
+</div>

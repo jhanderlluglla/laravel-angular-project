@@ -1,0 +1,28 @@
+<form class="suggestions-container" id="suggested-articles-dropdown" [class.has-results]="articles.length" [class.searching]="searching" (ngSubmit)="viewAllResults()">
+    <dropdown [autoPosition]="false">
+
+        <div class="input-container">
+            <input type="text" class="search-input" [attr.placeholder]="placeholder" [formControl]="searchQuery" #input>
+            <svg-icon name="search" class="search-icon input-icon"></svg-icon>
+        </div>
+
+        <div class="search-results dropdown-menu" #menu customScrollbar>
+            <div class="results-list">
+                <a class="result dropdown-item" #menuItem *ngFor="let article of articles" [routerLink]="urls.getArticleLink(article)" (click)="resetSearchQuery()">
+                    <svg-icon name="description"></svg-icon>
+                    <div class="result-content">
+                        <div class="title">{{article.title}}</div>
+                        <div class="body">{{article.body}}</div>
+                        <div class="meta" *ngIf="article.categories && article.categories[0]">
+                            <span class="category inline" *ngIf="article.categories[0].parent">
+                                {{article.categories[0].parent.name}}
+                            </span>
+                            <span class="child-category inline" *ngIf="article.categories[0]">{{article.categories[0].name}}</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="see-all" [routerLink]="urls.getSearchPageLink(searchQuery.value)" *ngIf="searchQuery.value" trans>See all results...</a>
+            </div>
+        </div>
+    </dropdown>
+</form>

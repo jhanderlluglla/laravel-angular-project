@@ -1,0 +1,30 @@
+<section class="scroll-container" id="category-component">
+    <hc-compact-header>
+        <breadcrumbs [resource]="category" resourceType="category"></breadcrumbs>
+    </hc-compact-header>
+
+    <div class="flex-container container">
+        <div class="category-articles">
+            <div class="header">
+                <div class="title">
+                    <h1 class="text">{{category.name}}</h1>
+                    <articles-order-select (onChange)="reloadArticles($event)"></articles-order-select>
+                </div>
+            </div>
+
+            <div class="articles">
+                <a class="article" *ngFor="let article of articles" [routerLink]="urls.getArticleLink(article)">
+                    <svg-icon name="description"></svg-icon>
+                    <div class="description">
+                        <div class="title">{{article.title}}</div>
+                        <div class="body">{{article.body}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <topics-panel [category]="category"></topics-panel>
+    </div>
+
+    <customer-footer></customer-footer>
+</section>

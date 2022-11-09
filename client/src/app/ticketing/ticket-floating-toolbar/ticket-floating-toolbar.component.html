@@ -1,0 +1,24 @@
+<ng-container *ngIf="currentUser.hasPermissions(['tickets.update', 'replies.create'])">
+    <assign-ticket-dropdown class="toolbar-item" [ticketsIds]="selectedTickets" (onAssigned)="ticketsUpdated()" tooltip="Assign">
+        <svg-icon name="user-custom"></svg-icon>
+    </assign-ticket-dropdown>
+
+    <assign-priority-ticket-dropdown class="toolbar-item" [ticketsIds]="selectedTickets" (onPriorityAssigned)="ticketsUpdated()" tooltip="Assign Priority">
+        <svg-icon name="format-list-numbered"></svg-icon>
+    </assign-priority-ticket-dropdown>
+
+    <dropdown class="toolbar-item change-status-dropdown" tooltip="Change Status">
+        <svg-icon name="flag-custom"></svg-icon>
+        <div class="dropdown-menu" #menu>
+            <div class="dropdown-item status-tag" #menuItem [ngClass]="tag.name" *ngFor="let tag of mailboxTags.getStatusTags(true, !currentUser.hasPermissions(['tickets.close']))" (click)="setStatusForSelectedTickets(tag)">{{tag.name}}</div>
+        </div>
+    </dropdown>
+
+    <add-tag-dropdown [ticketIds]="selectedTickets" (onTagAdded)="ticketsUpdated()" class="toolbar-item" tooltip="Add Tag">
+        <svg-icon name="add-tag-custom"></svg-icon>
+    </add-tag-dropdown>
+
+    <div class="toolbar-item delete-tickets-button last" (click)="maybeDeleteSelectedTickets()" tooltip="Delete" *ngIf="currentUser.hasPermissions(['tickets.delete'])">
+        <svg-icon name="delete-custom"></svg-icon>
+    </div>
+</ng-container>

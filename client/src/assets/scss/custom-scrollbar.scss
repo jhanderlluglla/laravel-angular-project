@@ -1,0 +1,27 @@
+.scroll-container, .ps-container {
+  position: relative;
+  overflow: auto;
+
+  .ps-scrollbar-x-rail, .ps-scrollbar-y-rail {
+    opacity: 1 !important;
+    right: 0;
+    width: 10px;
+    z-index: 10;
+
+    > .ps-scrollbar-y {
+      width: 10px;
+      border-radius: 0;
+    }
+  }
+}
+
+.ps-container.ps-theme-lite {
+  > .ps-scrollbar-x-rail, > .ps-scrollbar-y-rail {
+    opacity: 0.6 !important;
+    width: 7px;
+
+    > .ps-scrollbar-y {
+      width: 7px;
+    }
+  }
+}

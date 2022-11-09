@@ -1,0 +1,11 @@
+<section *ngIf="article" class="article-container" id="article">
+    <h1 class="article-title">{{article.title}}</h1>
+    <div class="article-body" [innerHTML]="trustedArticleBody"></div>
+
+    <div class="submit-ticket-container container">
+        <span trans>Have more questions?</span>
+        <a routerLink="/help-center/tickets/new" trans>Submit a Request</a>
+    </div>
+
+    <article-feedback [articleId]="article.id"></article-feedback>
+</section>

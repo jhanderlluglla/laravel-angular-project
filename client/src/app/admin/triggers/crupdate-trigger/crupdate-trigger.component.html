@@ -1,0 +1,102 @@
+<div class="header">
+    <button class="back-button" type="button" (click)="goBack()" tooltip="Back"><svg-icon name="keyboard-arrow-left"></svg-icon></button>
+    <div class="title" *ngIf="!editing" trans>Create new trigger</div>
+    <div class="title" *ngIf="editing" trans>Update trigger</div>
+</div>
+
+<form (ngSubmit)="createOrUpdateTrigger()">
+    <div class="section">
+        <div class="many-inputs">
+            <div class="input-container">
+                <label for="name" trans>Name</label>
+                <input type="text" [(ngModel)]="triggerModel['name']" name="name" id="name" required>
+                <div class="error" *ngIf="errors['name']">{{errors['name']}}</div>
+            </div>
+
+            <div class="input-container">
+                <label for="description" trans>Description</label>
+                <textarea [(ngModel)]="triggerModel['description']" name="description" id="description" rows="7"></textarea>
+                <div class="error" *ngIf="errors['description']">{{errors['description']}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="triggers-panel">
+        <div class="panel-header">
+            <div class="title" trans>Meet <span class="boxed-text">all</span> of the following conditions:</div>
+            <button class="no-style action-button add-button" type="button" tooltip="Add condition" (click)="addCondition('all')">
+                <svg-icon name="add"></svg-icon>
+            </button>
+        </div>
+        <div class="panel-body conditions">
+            <conditions [model]="triggerModel.conditions" [matchType]="'all'" [allConditions]="allConditions" [errors]="errors"></conditions>
+            <div class="error" *ngIf="errors['conditions']">{{errors['conditions']}}</div>
+        </div>
+    </div>
+
+    <div class="triggers-panel">
+        <div class="panel-header">
+            <div class="title" trans>Meet <span class="boxed-text">any</span> of the following conditions:</div>
+            <button class="no-style action-button add-button" type="button" tooltip="Add condition" (click)="addCondition('any')">
+                <svg-icon name="add"></svg-icon>
+            </button>
+        </div>
+        <div class="panel-body">
+            <conditions [model]="triggerModel.conditions" [matchType]="'any'" [allConditions]="allConditions" [errors]="errors"></conditions>
+            <div class="error" *ngIf="errors['conditions']">{{errors['conditions']}}</div>
+        </div>
+    </div>
+
+    <div class="triggers-panel actions">
+        <div class="panel-header">
+            <div class="title" trans>Perform these actions:</div>
+            <button class="no-style action-button add-button" type="button" tooltip="Add action" (click)="addAction()">
+                <svg-icon name="add"></svg-icon>
+            </button>
+        </div>
+        <div class="panel-body">
+            <div class="action" *ngFor="let currentAction of triggerModel.actions; let actionIndex = index;">
+                <div class="action-inner">
+                    <div class="inputs">
+                        <div class="input-container">
+                            <select name="action-{{actionIndex}}" id="action-{{actionIndex}}" [(ngModel)]="currentAction.action_id" (ngModelChange)="onActionSelect($event, currentAction)">
+                                <option value="0" disabled selected trans>-- Select an action. --</option>
+                                <option [ngValue]="action.id" *ngFor="let action of allActions">{{action.display_name}}</option>
+                            </select>
+                        </div>
+
+                        <section *ngIf="currentAction.actionModel" class="inputs-wrapper" [class.full-width]="currentAction.actionModel.input_config['inputs'].length > 1 || (currentAction.actionModel.input_config['inputs'][0] && currentAction.actionModel.input_config['inputs'][0]['type'] === 'textarea')">
+                            <ng-template ngFor let-input let-inputIndex="index" [ngForOf]="currentAction.actionModel.input_config['inputs']">
+                                <div class="input-container" *ngIf="input['type'] === 'text'">
+                                    <input type="text" name="value-{{actionIndex}}-{{inputIndex}}" placeholder="{{input['placeholder']}}" [(ngModel)]="currentAction.value[input['name']]" required>
+                                </div>
+
+                                <div class="input-container" *ngIf="input['type'] === 'textarea'">
+                                    <textarea name="value-{{actionIndex}}-{{inputIndex}}" placeholder="{{input['placeholder']}}" [(ngModel)]="currentAction.value[input['name']]" rows="7" required></textarea>
+                                </div>
+
+                                <div class="input-container" *ngIf="input['type'] === 'select'">
+                                    <select name="value-{{actionIndex}}-{{inputIndex}}" [(ngModel)]="currentAction.value[input['name']]" required>
+                                        <option value="{{option.value}}" *ngFor="let option of valueOptions[input['select_options']]">{{option.name}}</option>
+                                    </select>
+                                </div>
+                            </ng-template>
+                        </section>
+                    </div>
+                    <button class="no-style remove-button action-button" type="button" tooltip="Remove action" (click)="removeAction(currentAction)">
+                        <svg-icon name="remove"></svg-icon>
+                    </button>
+                </div>
+                <div class="error" *ngIf="errors['actions.'+actionIndex+'.value']">{{errors['actions.'+actionIndex+'.value']}}</div>
+            </div>
+            <div class="error" *ngIf="errors['actions']">{{errors['actions']}}</div>
+        </div>
+    </div>
+
+    <div class="submit-buttons">
+        <button type="submit" class="button primary">
+            <span *ngIf="editing" trans>Update</span>
+            <span *ngIf="!editing" trans>Create</span>
+        </button>
+    </div>
+</form>

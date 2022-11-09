@@ -1,0 +1,76 @@
+<section class="flex-table-panel spacing">
+    <div class="flex-table-panel-header">
+        <div class="header-inner default" *ngIf="!selectedItems.length">
+            <div class="left">
+                <button class="button primary" (click)="showCrupdateEscalationRuleModal()" trans *ngIf="supervisors && stages && tags && priorities">
+                    Add
+                </button>
+            </div>
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search Escalation Rule" trans-placeholder [formControl]="searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+        <div class="header-inner selected" *ngIf="selectedItems.length">
+            <div class="left">{{selectedItems.length}} <span trans>Escalation Rules Selected</span></div>
+            <div class="right">
+                <button class="no-style" tooltip="Delete" (click)="maybeDeleteSelectedEscalationRules()">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-table flex-table-bordered flex-table-compact flex-table-center-vertical flex-table-hover">
+        <div class="flex-table-row flex-table-header">
+            <div class="flex-table-item width-1">
+                <input type="checkbox" class="pretty-checkbox" id="toggle-all-escalationRules-checkbox" (click)="toggleAllSelectedItems()">
+                <label for="toggle-all-escalationRules-checkbox"><span>.</span></label>
+            </div>
+            <div class="flex-table-item" trans>Name</div>
+            <div class="flex-table-item" trans>Stage</div>
+            <div class="flex-table-item" trans>Ticket Status</div>
+            <div class="flex-table-item" trans>Ticket Priority</div>
+            <div class="flex-table-item" trans>Minutes</div>
+            <div class="flex-table-item" trans>Supervisors</div>
+            <div class="flex-table-item" trans>Status</div>
+
+            <div class="flex-table-item width-1"></div>
+        </div>
+        <div class="flex-table-row" *ngFor="let escalationRule of items; let index = index;" [class.selected]="isItemSelected(escalationRule.id)">
+            <div class="flex-table-item width-1" (click)="$event.stopPropagation()">
+                <input type="checkbox" class="pretty-checkbox" id="escalationRule-checkbox-{{index}}" (change)="toggleSelectedItem(escalationRule.id)" [checked]="isItemSelected(escalationRule.id)">
+                <label for="escalationRule-checkbox-{{index}}"><span>.</span></label>
+            </div>
+            <div class="flex-table-item">{{escalationRule.name}}</div>
+            <div class="flex-table-item capitalize">{{escalationRule.stage && escalationRule.stage.name }}</div>
+            <div class="flex-table-item capitalize">{{escalationRule.tag && escalationRule.tag.name}}</div>
+            <div class="flex-table-item capitalize">{{escalationRule.priority && escalationRule.priority.name}}</div>
+            <div class="flex-table-item">{{escalationRule.minutes}}</div>
+            <div class="flex-table-item capitalize">
+                <span *ngFor="let item of escalationRule.supervisors, let i=index">
+                    {{ item.name }}{{i === escalationRule.supervisors.length - 1 ? '' : ','}}
+                </span>
+            </div>
+            <div class="flex-table-item capitalize">
+                <button class="button primary save-button" (click)="change(escalationRule)">
+                    <span *ngIf="escalationRule.is_started == 0" trans>Start</span>
+                    <span *ngIf="escalationRule.is_started == 1" trans>Stop</span>
+                </button>
+            </div>
+            <div class="flex-table-item width-1 center edit-icon" tooltip="Edit EscalationRule">
+                <button class="no-style" (click)="showCrupdateEscalationRuleModal(escalationRule)"><svg-icon name="edit"></svg-icon></button>
+            </div>
+        </div>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>Nothing To Display.</span>
+            <span secondary trans>Seems like no escalationRules have been created yet.</span>
+        </no-results-message>
+    </div>
+
+    <div class="flex-table-panel-footer" [class.hidden]="paginator.params.perPage >= paginator.params.total">
+        <pagination-controls [paginator]="paginator" itemsName="EscalationRules"></pagination-controls>
+    </div>
+</section>

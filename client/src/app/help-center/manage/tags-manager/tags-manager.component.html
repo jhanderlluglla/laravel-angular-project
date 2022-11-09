@@ -1,0 +1,22 @@
+<div class="input-container input-group" *ngIf="!readonly">
+    <input type="text" class="tags-string-model" [(ngModel)]="tagsString">
+    <button class="button primary add-tags-button" (click)="addTags(tagsString)" trans>Add</button>
+</div>
+
+<p class="main-info" *ngIf="!readonly" trans>Separate tags with comma.</p>
+
+<div class="selected-tags">
+    <div class="tag" *ngFor="let tag of selectedTags">
+        <button class="round-close-button" (click)="removeTag(tag)" *ngIf="!readonly">
+            <svg-icon name="close"></svg-icon>
+        </button>
+        <span class="tag-name">{{tag}}</span>
+    </div>
+</div>
+
+<div class="existing-tags" *ngIf="existingTags.length && ! readonly">
+    <p trans>Choose from existing tags:</p>
+    <div class="tags-list" customScrollbar="lite" customScrollbarMinLength="0">
+        <div class="tag-name" *ngFor="let tag of existingTags" (click)="addTag(tag.name)">{{tag.name}}</div>
+    </div>
+</div>

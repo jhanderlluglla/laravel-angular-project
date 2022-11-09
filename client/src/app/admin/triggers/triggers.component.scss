@@ -1,0 +1,27 @@
+@import "../../../assets/scss/variables";
+
+triggers {
+  display: block;
+  height: 100%;
+
+  > .header {
+    border-bottom: 1px solid $border-color;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+
+    > .text {
+      margin-right: 10px;
+    }
+  }
+
+  .flex-table-panel {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    font-weight: 500;
+
+    &.spacing {
+      margin: 25px;
+    }
+  }
+}

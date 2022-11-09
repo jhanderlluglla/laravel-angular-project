@@ -1,0 +1,18 @@
+<div class="panel-header" trans>Your Purchases</div>
+<div class="panel-body">
+    <div class="purchases">
+        <div class="purchase" *ngFor="let purchase of user.purchase_codes">
+            <a class="image" [href]="purchase.url"><img [src]="purchase.image"></a>
+            <div class="details">
+                <a class="item-name" target="_blank" [href]="purchase.url">{{purchase.item_name}}</a>
+                <div class="meta">
+                    <div class="item-id">Item ID: {{purchase.item_id}}</div>
+                    <div class="purchase-code">Purchase Code: {{purchase.code}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel-footer">
+    <button type="button" class="button primary" (click)="updatePurchases()" trans>Update Purchases</button>
+</div>

@@ -1,0 +1,10 @@
+@import "../../../../assets/scss/variables";
+
+articles-order-select {
+  display: inline-block;
+  width: 100%;
+
+  > .input-container {
+    max-width: 100%;
+  }
+}

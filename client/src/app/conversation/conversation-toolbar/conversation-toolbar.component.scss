@@ -1,0 +1,82 @@
+@import "../../../assets/scss/variables";
+
+conversation-toolbar {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+  height: 57px;
+  padding: 0 35px 0 10px;
+  white-space: nowrap;
+  color: rgba(0,0,0,0.7);
+
+  > .left, > .right {
+    width: 50%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  > .toolbar-actions {
+    .action {
+      padding: 15px;
+      position: relative;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: $text-color;
+      }
+
+      svg-icon {
+        height: 26px;
+        width: 26px;
+      }
+    }
+  }
+
+  .ticket-status-dropdown-container {
+    position: relative;
+
+    .dropdown-item {
+      text-transform: capitalize;
+    }
+  }
+
+  .ticket-info {
+    justify-content: flex-end;
+    vertical-align: top;
+
+    > .ticket-number {
+      font-size: 3rem;
+    }
+
+    > .ticket-status {
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      background-color: $gray-bg-color;
+      padding: 4px 12px;
+      margin-left: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+
+      &.open {
+        background-color: $success-bg-color;
+        color: $success-text-color;
+        border-color: transparent;
+      }
+    }
+
+    > .ticket-priority {
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      background-color: $gray-bg-color;
+      padding: 4px 12px;
+      margin-left: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: .02em;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../assets/scss/variables";
+
+page {
+  display: block;
+  height: 100%;
+  overflow: auto;
+
+  > .page-body {
+    padding: 25px;
+    min-height: calc(100% - #{$hc-compact-header-navbar-height + $hc-footer-height});
+  }
+
+  @import "../help-center/shared/article/article-body";
+}

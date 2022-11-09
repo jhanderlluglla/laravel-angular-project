@@ -1,0 +1,183 @@
+@import "../../../../assets/scss/variables";
+
+.article-body, .editor-body {
+  font-size: $article-font-size;
+  font-weight: $article-font-weight;
+  line-height: $article-line-height;
+
+  ul, ol {
+    font-size: inherit;
+    font-weight: inherit;
+    margin-top: 10px;
+    position: relative;
+
+    > li {
+      margin-bottom: 8px;
+    }
+  }
+
+  ul {
+    padding-left: 40px;
+    position: relative;
+
+    > li {
+      list-style-type: disc;
+      margin-bottom: 7px;
+    }
+  }
+
+  ol {
+    counter-reset: custom-counter;
+    list-style: none;
+
+    > li:before {
+      content: counter(custom-counter, decimal) '.';
+      counter-increment: custom-counter;
+      font-weight: 500;
+      position: absolute;
+      left: -10px;
+      width: 40px;
+      text-align: right;
+    }
+  }
+
+  strong {
+    font-weight: 400;
+    color: $hc-title-text-color;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: $article-image-margin;
+    border: $article-image-border;
+    padding: $article-image-padding;
+    border-radius: $article-image-border-radius;
+  }
+
+  hr {
+    background-color: $article-divider-color;
+    height: 2px;
+    border: 0;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: $article-h1-font-size;
+    font-weight: $article-h1-font-weight;
+    line-height: $article-h1-line-height;
+    margin: $article-h1-margin;
+  }
+
+  h2 {
+    font-size: $article-h2-font-size;
+    font-weight: $article-h2-font-weight;
+    line-height: $article-h2-line-height;
+    margin: $article-h2-margin;
+  }
+
+  h3 {
+    font-size: $article-h3-font-size;
+    font-weight: $article-h3-font-weight;
+    line-height: $article-h3-line-height;
+    margin: $article-h3-margin;
+  }
+
+  p {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  pre {
+    overflow: auto;
+    max-width: 700px;
+
+    > code {
+      background-color: inherit;
+      border-radius: 0;
+      color: inherit;
+      padding: 0;
+    }
+  }
+
+  code {
+    background-color: $hc-breadcrumb-background-color;
+    border-radius: 3px;
+    font-size: 90%;
+    color: #c7254e;
+    padding: 2px 4px;
+  }
+
+  a {
+    color: $link-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: transparent;
+
+    td {
+      padding: 8px;
+      vertical-align: top;
+      border-top: 1px solid $border-color;
+    }
+
+    th {
+      text-align: left;
+      padding: 8px;
+      vertical-align: bottom;
+      border-bottom: 2px solid $border-color;
+      color: $hc-title-text-color;
+      font-weight: 400;
+    }
+  }
+
+  .widget {
+    background-color: #f3fbf7;
+    max-width: 100%;
+    padding: 14px;
+    margin: 35px 0;
+    border-radius: 3px;
+    overflow-wrap: break-word;
+    border-left: 5px solid darken(#f3fbf7, 40%);
+    font-size: 1.7rem;
+
+    > .title {
+      font-weight: 500;
+      color: $hc-title-text-color;
+    }
+
+    &.widget-important {
+      background-color: #fef7ed;
+      border-left: 5px solid darken(#fef7ed, 40%);
+    }
+
+    &.widget-warning {
+      background-color: #f2564d;
+      border-left: 5px solid darken(#f2564d, 40%);
+    }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 1.6rem;
+
+    widget.widget-info {
+      font-size: inherit;
+    }
+  }
+}
+
+//TODO: move this elsewhere so shared styles are
+//TODO: not polluted with text editor only styles
+.editor-body {
+  margin: 15px 20px;
+}

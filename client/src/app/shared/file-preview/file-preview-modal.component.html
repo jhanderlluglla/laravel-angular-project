@@ -1,0 +1,14 @@
+<div class="backdrop"></div>
+
+<div class="modal-content">
+    <div class="modal-header" *ngIf="files && files.length">
+        <div class="title" trans>File Preview</div>
+        <div class="file-name">{{ filePreview.files[filePreview.index].name }}</div>
+        <div class="actions">
+            <button class="button primary download-button" (click)="filePreview.downloadFile()"><svg-icon name="file-download" class="align-middle"></svg-icon> <span trans>Download</span></button>
+        </div>
+        <button type="button" (click)="close()" class="close-button no-style icon-button"><svg-icon name="close"></svg-icon></button>
+    </div>
+
+    <file-preview #filePreview [files]="files" [index]="index" customScrollbar></file-preview>
+</div>

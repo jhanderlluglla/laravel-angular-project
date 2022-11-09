@@ -1,0 +1,58 @@
+<section class="flex-table-panel spacing">
+    <div class="flex-table-panel-header">
+        <div class="header-inner default" *ngIf="!selectedItems.length">
+            <div class="left">
+                <button class="button primary" (click)="showCrupdateTagModal()" *ngIf="currentUser.hasPermission('tags.create')" trans>Add</button>
+            </div>
+            <div class="right">
+                <div class="input-container">
+                    <input type="text" class="search" placeholder="Search tags" trans-placeholder [formControl]="searchQuery">
+                    <svg-icon name="search"></svg-icon>
+                </div>
+            </div>
+        </div>
+        <div class="header-inner selected" *ngIf="selectedItems.length">
+            <div class="left">{{selectedItems.length}} <span trans>Tags Selected</span></div>
+            <div class="right">
+                <button class="no-style" tooltip="Delete" (click)="maybeDeleteSelectedTags()" *ngIf="currentUser.hasPermission('tags.delete')">
+                    <svg-icon name="delete"></svg-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-table flex-table-bordered flex-table-compact flex-table-center-vertical flex-table-hover">
+        <div class="flex-table-row flex-table-header">
+            <div class="flex-table-item width-1">
+                <input type="checkbox" class="pretty-checkbox" id="toggle-all-tags-checkbox" (click)="toggleAllSelectedItems()">
+                <label for="toggle-all-tags-checkbox"><span>.</span></label>
+            </div>
+            <div class="flex-table-item" trans>Name</div>
+            <div class="flex-table-item" trans>Type</div>
+            <div class="flex-table-item width-3" trans>Display Name</div>
+            <div class="flex-table-item" trans>Number of Tickets</div>
+            <div class="flex-table-item width-1"></div>
+        </div>
+        <div class="flex-table-row" *ngFor="let tag of items; let index = index;" [class.selected]="isItemSelected(tag.id)">
+            <div class="flex-table-item width-1" (click)="$event.stopPropagation()">
+                <input type="checkbox" class="pretty-checkbox" id="tag-checkbox-{{index}}" (change)="toggleSelectedItem(tag.id)" [checked]="isItemSelected(tag.id)">
+                <label for="tag-checkbox-{{index}}"><span>.</span></label>
+            </div>
+            <div class="flex-table-item">{{tag.name}}</div>
+            <div class="flex-table-item capitalize">{{tag.type}}</div>
+            <div class="flex-table-item width-3">{{tag.display_name}}</div>
+            <div class="flex-table-item">{{tag.tickets_count}}</div>
+            <div class="flex-table-item width-1 center edit-icon" tooltip="Edit Tag">
+                <button class="no-style" (click)="showCrupdateTagModal(tag)" *ngIf="currentUser.hasPermission('tags.update')"><svg-icon name="edit"></svg-icon></button>
+            </div>
+        </div>
+
+        <no-results-message *ngIf="paginator.doesNotHaveResults()">
+            <span primary trans>Nothing To Display.</span>
+            <span secondary trans>Seems like no tags have been created yet.</span>
+        </no-results-message>
+    </div>
+
+    <div class="flex-table-panel-footer" [class.hidden]="paginator.params.perPage >= paginator.params.total">
+        <pagination-controls [paginator]="paginator" itemsName="Tags"></pagination-controls>
+    </div>
+</section>

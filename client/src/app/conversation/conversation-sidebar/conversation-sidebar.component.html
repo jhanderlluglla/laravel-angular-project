@@ -1,0 +1,26 @@
+<div class="user-info" *ngIf="requester">
+    <a class="avatar" [routerLink]="['/mailbox/users', requester.id]">
+        <img [src]="requester.avatar" alt="Avatar">
+    </a>
+
+    <div class="user-details">
+        <a class="name" [routerLink]="['/mailbox/users', requester.id]">{{requester.display_name}}</a>
+        <div class="email">
+            <svg-icon name="mail-outline"></svg-icon> {{requester.email}}
+        </div>
+    </div>
+</div>
+
+<div class="tickets-list-container" [class.tickets-visible]="previousTicketsVisible">
+    <div class="title" (click)="previousTicketsVisible = !previousTicketsVisible">
+        <span class="text" trans>Other Conversations</span>
+        <button class="no-style toggle-button"><svg-icon name="keyboard-arrow-down"></svg-icon></button>
+    </div>
+
+    <div class="tickets-list toggle-container" *ngIf="otherTickets">
+        <div class="ticket" *ngFor="let ticket of otherTickets" [highlightOpenTicket]="ticket.tags" (click)="openTicketModal(ticket.id)">
+            <svg-icon name="mail-outline"></svg-icon>
+            <span>{{ticket.subject}}</span>
+        </div>
+    </div>
+</div>

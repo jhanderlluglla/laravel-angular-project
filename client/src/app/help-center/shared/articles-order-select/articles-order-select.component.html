@@ -1,0 +1,9 @@
+<div class="input-container">
+    <label for="order" *ngIf="label">{{label}}</label>
+    <select name="order" id="order" [ngModel]="selectedValue" (ngModelChange)="fireOnChange($event)">
+        <option value="views|desc">Most viewed first</option>
+        <option value="was_helpful|desc">Most helpful first</option>
+        <option value="created_at|desc">Newest first</option>
+        <option value="title|asc">A to Z</option>
+    </select>
+</div>

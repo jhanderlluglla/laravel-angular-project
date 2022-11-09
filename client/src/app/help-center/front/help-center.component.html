@@ -1,0 +1,44 @@
+<section class="scroll-container" id="help-center">
+    <hc-header></hc-header>
+
+    <div class="content">
+        <ng-container *ngFor="let category of categories">
+            <section class="category" *ngIf="!category.hidden">
+
+                <div class="category-info">
+                    <h2 class="category-name"><a class="text" [routerLink]="urls.getCategoryLink(category)">{{category.name}}</a></h2>
+                    <p class="category-description" *ngIf="category.description">{{category.description}}</p>
+                </div>
+
+                <div class="articles-list">
+                    <a class="article" *ngFor="let article of category.articles" [routerLink]="urls.getArticleLink(article)">
+                        <svg-icon name="description"></svg-icon>
+                        <span class="text">{{article.title}}</span>
+                    </a>
+                </div>
+
+                <div class="child-categories">
+                    <ng-template ngFor let-child [ngForOf]="category.children">
+                        <div class="child-category" *ngIf="!child.hidden">
+
+                            <div class="title">
+                                <svg-icon [name]="child.icon" *ngIf="child.icon"></svg-icon>
+                                <h3 class="child-category-name"><a [routerLink]="urls.getCategoryLink(child)">{{child.name}} ({{child.articles_count}})</a></h3>
+                            </div>
+
+                            <div class="articles-list">
+                                <a class="article" *ngFor="let article of child.articles" [routerLink]="urls.getArticleLink(article, child)">
+                                    <svg-icon name="description"></svg-icon>
+                                    <span class="text">{{article.title}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+
+            </section>
+        </ng-container>
+    </div>
+
+    <customer-footer></customer-footer>
+</section>

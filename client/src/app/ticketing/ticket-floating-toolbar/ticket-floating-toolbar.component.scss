@@ -1,0 +1,41 @@
+@import "../../../assets/scss/variables";
+
+ticket-floating-toolbar {
+  display: flex;
+  position: fixed;
+  top: $navbar-height + 8px;
+  background-color: $floating-toolbar-bg-color;
+  left: calc(50% - #{$floating-toolbar-width / 2});
+  min-width: $floating-toolbar-width;
+  box-shadow: $box-shadow-3;
+  user-select: none;
+  z-index: 10;
+  white-space: nowrap;
+
+  > .toolbar-item {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    padding: 15px;
+    border-right: 1px solid $border-color;
+
+    &.last {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    svg-icon {
+      color: rgba(0,0,0,0.7);
+      vertical-align: bottom;
+      width: 28px;
+      height: 28px;
+    }
+
+    .status-tag {
+      text-transform: capitalize;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<section class="file-tree" *ngIf="zip.tree">
+    <button class="back no-style" (click)="zip.oneFolderUp()" *ngIf="zip.folder._parent"><svg-icon name="arrow-back"></svg-icon></button>
+    <h2>{{zip.name}} <span class="item-count">{{zip.folderLength}} items</span></h2>
+    <ul>
+
+        <ng-template ngFor let-pair [ngForOf]="zip.folder | mapToIterable">
+            <li *ngIf="pair.key.charAt(0) !== '_'" (click)="zip.changeFolder(pair.key, pair.value)" class="folder">
+                <svg-icon name="folder"></svg-icon>
+                <span>{{pair.key}}</span>
+            </li>
+            <li *ngIf="pair.key === '_files'">
+                <ul>
+                    <ng-template ngFor let-name [ngForOf]="pair.value">
+                        <li class="file"><svg-icon name="insert-drive-file"></svg-icon> {{name}}</li>
+                    </ng-template>
+                </ul>
+            </li>
+        </ng-template>
+    </ul>
+</section>

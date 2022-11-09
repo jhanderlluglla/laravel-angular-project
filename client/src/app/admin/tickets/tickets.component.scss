@@ -1,0 +1,131 @@
+@import "../../../assets/scss/variables";
+
+tickets-list {
+  display: block;
+  flex: 1 1 auto;
+  background-color: darken($panel-background-color, 4%);
+  height: 100%;
+  position: relative;
+
+  .scroll-container {
+    height: 100%;
+  }
+
+  .tickets {
+    min-height: calc(100% - #{$pagination-controls-height});
+
+    .flex-table-header {
+      > .flex-table-item {
+        height: 35px;
+      }
+    }
+
+    .ticket {
+      border-bottom: 1px solid $border-color;
+
+      &.open {
+        background-color: $panel-background-color;
+
+        .title-text, .ticket-number, .last-updated {
+          font-weight: 500;
+        }
+      }
+
+      &.selected {
+        background-color: $table-selected-row-bg-color;
+      }
+
+      .ticket-number {
+        flex: 0 0 90px;
+      }
+
+      .last-updated {
+        flex: 0 0 90px;
+      }
+
+      .last-worker {
+        flex: 0 0 130px;
+        margin-right: 25px;
+      }
+
+      .customer-name {
+        max-height: 100%;
+      }
+
+      .replies-count {
+        flex: 0 0 50px;
+
+        > span {
+          background-color: darken($panel-background-color, 7%);
+          color: $text-color-secondary;
+          border-radius: 4px;
+          padding: 1px 6px 0;
+          font-size: 1.1rem;
+          border: 1px solid $border-color;
+        }
+      }
+
+      .avatar {
+        flex: 0 0 60px;
+        margin: 0 25px 0 15px;
+        align-items: center;
+
+        img {
+          width: 38px;
+          height: 38px;
+          object-fit: cover;
+          box-shadow: 0 0 0 1px #fff, 0 0 1px 2px #AAAEB7;
+          border-radius: 50%;
+        }
+      }
+
+      .ticket-summary {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 80px;
+      }
+
+      .customer {
+        padding-left: 15px;
+        font-weight: 500;
+        color: $text-color-secondary;
+        flex: 0 0 130px;
+        .checkbox {
+          margin-right: 10px;
+        }
+      }
+
+      .title {
+        display: flex;
+        height: 50%;
+        align-items: center;
+
+        .tags > .tag-label:last-of-type {
+          margin-right: 7px;
+        }
+      }
+
+      .ticket-body {
+        height: 50%;
+        color: $text-color-secondary;
+      }
+    }
+
+    no-results-message {
+      flex: 1 1 auto;
+      max-height: 500px;
+      height: auto;
+    }
+  }
+
+  .from-single-user {
+    .customer {
+      flex: 0 0 40px;
+    }
+  }
+
+  pagination-controls {
+    background-color: #fff;
+  }
+}

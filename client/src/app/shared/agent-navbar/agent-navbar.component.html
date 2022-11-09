@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="nav-content">
+        <a class="nav-group" [routerLink]="['/']">
+            <img class="logo" *ngIf="settings.has('branding.hc_logo')" [src]="settings.get('branding.hc_logo')" alt="Agent logo">
+            <div class="text-logo" *ngIf="!settings.has('branding.hc_logo')">{{settings.get('branding.site_name')}}</div>
+        </a>
+
+        <div class="nav-group left flex-grow-none">
+            <div class="nav-item"><a routerLink="/mailbox" routerLinkActive="router-link-active" *ngIf="currentUser.hasPermission('tickets.view')" trans>Tickets</a></div>
+            <div class="nav-item" *ngIf="currentUser.hasPermission('access.help_center_manage')"><a routerLink="/help-center/manage" routerLinkActive="router-link-active" trans>Help Center</a></div>
+            <div class="nav-item admin-link" *ngIf="currentUser.hasPermission('access.admin')"><a routerLink="/admin" routerLinkActive="router-link-active" trans>Admin Area</a></div>
+        </div>
+
+        <div class="nav-group left search-bar-container">
+            <ticket-search-dropdown class="nav-item search-bar"></ticket-search-dropdown>
+        </div>
+
+        <div class="nav-group right">
+            <logged-in-user-widget class="nav-item"></logged-in-user-widget>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,76 @@
+@import "../../../../assets/scss/variables";
+
+zip-preview {
+  display: flex;
+  width: 100%;
+  height: calc(100% - #{$file-preview-modal-header-height});
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+
+  .file-tree {
+    background-color: #fff;
+    box-shadow: $box-shadow-1;
+    padding: 15px;
+    width: 100%;
+    max-width: 950px;
+    height: 90%;
+    color: $text-color-secondary;
+    position: relative;
+
+    .back {
+      cursor: pointer;
+      position: absolute;
+      left: 10px;
+      top: 27px;
+      color: $icon-color-dark;
+    }
+
+    h2 {
+      margin: 0 0 20px 30px;
+      font-size: 3rem;
+
+      > .item-count {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 13px;
+      }
+    }
+
+    .folder, .file {
+      border-bottom: 1px solid $border-color;
+      padding: 8px 0;
+      font-size: 17px;
+      width: 100%;
+
+      svg-icon {
+        vertical-align: sub;
+        color: $icon-color-dark;
+        margin-right: 2px;
+        height: 22px;
+        width: 22px;
+      }
+
+      &:first-of-type {
+        border-top: 1px solid $border-color;
+      }
+    }
+
+    .folder {
+      cursor: pointer;
+    }
+
+    > ul {
+      max-height: calc(100% - 53px);
+      overflow: auto;
+    }
+
+    ul {
+      padding: 0;
+
+      > li {
+        list-style: none;
+      }
+    }
+  }
+}

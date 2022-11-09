@@ -1,0 +1,165 @@
+
+GroupsController.php
+TicketRepository.php
+TicketEscalation.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------- Controller ----------------------
+IncomingMailHandler.php
+
+
+
+
+ticket-reply.blade.php
+escalation-rule-notification.blade.php
+
+EscalationRuleEventSubscriber.php
+EscalationRuleNotification.php
+
+Ticket.php
+EscalationRule.php
+
+TicketEscalation.php
+
+MailTemplatePreview.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+added new field to ticket ()
+
+TicketController.php
+TicketRepository.php
+TagRepository.php
+Ticket.php
+permissions.php
+
+// client:
+
+changed 
+custom-browser-xhr.ts
+settings.service.ts
+http-client.ts
+backend-events.ts
+
+GroupAssigned.php
+GroupsController.php
+
+
+
+
+// Database
+insert new row to settings table.
+
+
+
+TicketAssigneeController.php
+GroupController.php
+TagRepository.php
+
+
+TicketConroller.php
+User.php
+
+Permission.php
+TagRepository.php
+TicketRepository.php
+
+
+
+// 2.21
+
+ ---- services ----
+UserRepository.php
+TicketRepository.php
+EscalationRuleRepository.php
+SupervisorRepository.php
+StageRepository.php
+PriorityRepository.php
+
+
+-- models --------------
+
+EscalationRule.php
+Priority.php
+Tag.php
+Ticket.php
+Supervisor.php
+Stage.php
+SupervisorRule.php
+
+
+
+------------- command -----------------
+
+TicketEscalation.php
+
+
+
+ ---------------------- controllers ---------------------
+
+EscalationRuleController.php
+NewTicketCategoriesController.php
+SupervisorController.php
+StageController.php
+PriorityController.php
+TicketAssigneeController.php
+
+---- notification -------------------
+EscalationRuleNotification.php
+EscalationRuleEventSubscriber
+EscalationRuleEvent.php
+
+ ------------------- blade --------------------------
+escalation-rule-notification.blade.php
+escalation-rule-notification-plain.blade.php
+
+changed the template (Ticket Created Notification)
+
+------------------ event -----------------
+
+
+--- routing 
+
+web.php
+
+
+
+----- DB ----------
+users table add phone_number field
+create escalation_rules 
+create stages
+create priorities
+create supervisors
+add ticket_priority_id to tickets

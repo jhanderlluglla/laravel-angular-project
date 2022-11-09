@@ -1,0 +1,84 @@
+@import "../../../../assets/scss/variables";
+
+article-feedback {
+  display: flex;
+  padding: 50px 0;
+  align-items: center;
+  border-top: 1px solid $border-color-light;
+  border-bottom: 1px solid $border-color-light;
+  margin-bottom: 50px;
+
+  > .title {
+    font-size: $article-font-size;
+    font-weight: $article-font-weight;
+    color: $hc-title-text-color;
+    margin-right: 15px;
+  }
+
+  .feedback-submitted-notification {
+    font-size: 1.7rem;
+    font-weight: $article-font-weight;
+    color: $hc-title-text-color;
+  }
+
+  .input-container {
+    margin: 20px 0;
+
+    > textarea {
+      border-radius: 3px;
+    }
+  }
+
+  .feedback-buttons {
+    > .selected {
+      background-color: $success-bg-color;
+      color: $success-text-color;
+
+      &:hover {
+        background-color: lighten($success-bg-color, 5%);
+      }
+    }
+
+    > .yes, > .no {
+      background-color: transparent;
+      border-radius: 50px;
+      border: 1px solid;
+      min-width: 92px;
+      padding-right: 15px;
+      vertical-align: middle;
+
+      > svg-icon {
+        display: inline-block;
+      }
+    }
+
+    > .yes {
+      border-color: $success-bg-color;
+      color: $success-bg-color;
+      margin-right: 10px;
+
+      &:hover, &.selected {
+        background-color: $success-bg-color;
+        color: $success-text-color;
+      }
+    }
+
+    > .no {
+      border-color: $danger-bg-color;
+      color: $danger-bg-color;
+
+      &:hover, &.selected {
+        background-color: $danger-bg-color;
+        color: $danger-text-color;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    display: block;
+
+    .title {
+      margin-bottom: 10px;
+    }
+  }
+}

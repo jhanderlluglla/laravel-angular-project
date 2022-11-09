@@ -1,0 +1,9 @@
+<dropdown (onFirstOpen)="fetchAgents()">
+    <ng-content></ng-content>
+
+    <div class="dropdown-menu" #menu customScrollbar>
+        <div class="dropdown-item anyone-item" #menuItem (click)="assignTicketsTo()" [class.active]="ticket && !ticket.assigned_to" trans>Anyone</div>
+        <div class="dropdown-item me-item" #menuItem (click)="assignTicketsTo(currentUser.get('id'))" [class.active]="ticket && ticket.assigned_to == currentUser.get('id')" trans>Me</div>
+        <div class="dropdown-item agent-item" #menuItem *ngFor="let agent of agents" (click)="assignTicketsTo(agent.id)" [class.active]="ticket && ticket.assigned_to == agent.id">{{agent.email}}</div>
+    </div>
+</dropdown>

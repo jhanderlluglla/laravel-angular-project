@@ -1,0 +1,46 @@
+@import "../../../../assets/scss/variables";
+
+hc-compact-header {
+  display: block;
+  background: url('../../../../assets/images/pattern.svg') $primary-color-dark;
+  background-position: center top;
+  color: #fff;
+
+  > customer-navbar.transparent {
+
+    > .navbar {
+      background-color: $primary-color-dark;
+      height: $hc-compact-header-navbar-height;
+    }
+  }
+
+  > .page-header {
+    background-color: $hc-breadcrumb-background-color;
+
+    > .container {
+      height: $hc-compact-header-sub-header-height;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    breadcrumbs {
+      flex: 1 1 auto;
+      color: $text-color-secondary;
+    }
+
+    .search-bar {
+      flex: 1 1 auto;
+
+      input {
+        border: 1px solid $border-color;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $laptop) {
+    breadcrumbs {
+      display: none;
+    }
+  }
+}
